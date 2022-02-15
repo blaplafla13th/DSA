@@ -51,6 +51,7 @@ public class Fraction {
     }
 
     public void setNumerator(int numerator) {
+        if (numerator == 0) throw new NumberFormatException("Divide zero");
         this.numerator = numerator;
     }
 
@@ -84,20 +85,27 @@ public class Fraction {
         numerator = this.numerator * fraction.denominator;
         denominator = this.denominator * fraction.numerator;
     }
-    public void plus(Fraction... fractions){
-        for (Fraction fraction: fractions) {
+
+    public void plus(Fraction... fractions) {
+        for (Fraction fraction : fractions) {
             this.plus(fraction);
         }
-    }public void subtract(Fraction... fractions){
-        for (Fraction fraction: fractions) {
+    }
+
+    public void subtract(Fraction... fractions) {
+        for (Fraction fraction : fractions) {
             this.subtract(fraction);
         }
-    }public void multi(Fraction... fractions){
-        for (Fraction fraction: fractions) {
+    }
+
+    public void multi(Fraction... fractions) {
+        for (Fraction fraction : fractions) {
             this.multi(fraction);
         }
-    }public void divide(Fraction... fractions){
-        for (Fraction fraction: fractions) {
+    }
+
+    public void divide(Fraction... fractions) {
+        for (Fraction fraction : fractions) {
             this.divide(fraction);
         }
     }
