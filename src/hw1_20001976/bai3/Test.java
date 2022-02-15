@@ -32,7 +32,7 @@ public class Test {
         System.out.println("Test divide: 3/4,2");
         fraction.divide(new Fraction(3, 4));
         System.out.println(fraction);
-        System.out.println("Test multiple divide");
+        System.out.println("Test multiple divide:3/4,2");
         fraction.divide(new Fraction(3, 4), new Fraction(2));
         System.out.println(fraction);
 
