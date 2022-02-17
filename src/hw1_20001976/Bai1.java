@@ -21,8 +21,13 @@ public class Bai1 {
         }
         try {
             System.out.print("Input Char:");
-            char c = input.nextLine().charAt(0);
-            System.out.println("Value you input:" + c);
+            String st = input.nextLine();
+            if (st.length() > 1) {
+                System.out.println("Not a character");
+            } else {
+                char c = st.charAt(0);
+                System.out.println("Value you input:" + c);
+            }
         } catch (Exception e) {
             System.out.println("Not a character");
         }
