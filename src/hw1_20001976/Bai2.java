@@ -73,7 +73,7 @@ public class Bai2 {
         int number = 0;
         boolean check = false;
         while (!check) {
-            System.out.println("Input " + name + ":");
+            System.out.print("Input " + name + ":");
             try {
                 number = Integer.parseInt(input.nextLine());
                 if (number > 0) {
