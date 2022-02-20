@@ -1,6 +1,5 @@
 package hw1_20001976;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Bai2 {
@@ -16,15 +15,6 @@ public class Bai2 {
         findPerfect(a);
         //y 3
         findPrime(a);
-        //y 4
-        System.out.println();
-        ArrayList<Number> number = new ArrayList<>();
-        number.add(1);
-        number.add(2.5);
-        number.add((long)Integer.MAX_VALUE+1);
-        for (Number i: number) {
-            System.out.println(i);
-        }
     }
 
     public static void findPerfect(int[] a) {
