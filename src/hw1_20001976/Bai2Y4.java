@@ -9,6 +9,17 @@ public class Bai2Y4<N extends Number> {
         this.length = length;
     }
 
+    N get(int index) {
+        @SuppressWarnings("not number") final N number = (N) numberArray[index];
+        return number;
+    }
+
+    void add(int index, N number) {
+        numberArray[index] = number;
+    }
+}
+
+class Test {
     public static void main(String[] args) {
         System.out.println("Test");
         Bai2Y4 numberArray = new Bai2Y4(3);
@@ -18,14 +29,5 @@ public class Bai2Y4<N extends Number> {
         for (int i = 0; i < numberArray.length; i++) {
             System.out.println(numberArray.get(i));
         }
-    }
-
-    N get(int index) {
-        @SuppressWarnings("not number") final N number = (N) numberArray[index];
-        return number;
-    }
-
-    void add(int index, N number) {
-        numberArray[index] = number;
     }
 }
