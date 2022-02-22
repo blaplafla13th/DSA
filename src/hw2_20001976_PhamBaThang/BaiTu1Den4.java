@@ -1,9 +1,9 @@
 package hw2_20001976_PhamBaThang;
 
-import hw2_20001976_PhamBaThang.NormalSort.BubbleSort;
-import hw2_20001976_PhamBaThang.NormalSort.InsertionSort;
-import hw2_20001976_PhamBaThang.NormalSort.SelectionSort;
-import hw2_20001976_PhamBaThang.NormalSort.Sort;
+import hw2_20001976_PhamBaThang.normal_sort.BubbleSort;
+import hw2_20001976_PhamBaThang.normal_sort.InsertionSort;
+import hw2_20001976_PhamBaThang.normal_sort.SelectionSort;
+import hw2_20001976_PhamBaThang.normal_sort.Sort;
 
 public class BaiTu1Den4 {
     public static void main(String[] args) {

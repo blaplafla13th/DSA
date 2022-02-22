@@ -1,4 +1,4 @@
-package hw2_20001976_PhamBaThang.NormalSort;
+package hw2_20001976_PhamBaThang.normal_sort;
 
 public class InsertionSort extends Sort {
 
