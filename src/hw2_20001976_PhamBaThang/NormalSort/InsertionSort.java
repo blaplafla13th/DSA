@@ -1,0 +1,44 @@
+package hw2_20001976_PhamBaThang.NormalSort;
+
+public class InsertionSort extends Sort {
+
+    public InsertionSort(int[] array) {
+        this.array = array;
+        swapCounter = 0;
+        compareCounter = 0;
+    }
+
+    public void sortAsc(boolean printDetail) {
+        swapCounter = 0;
+        compareCounter = 0;
+        for (int i = 1; i < array.length; i++) {
+            for (int j = i; j > 0; j--) {
+                compareCounter++;
+                if (array[j] < array[j - 1]) {
+                    swap(j, j - 1);
+                } else break;
+            }
+            if (printDetail) {
+                printArray();
+            }
+        }
+    }
+
+    public void sortDesc(boolean printDetail) {
+        swapCounter = 0;
+        compareCounter = 0;
+        for (int i = 1; i < array.length; i++) {
+            for (int j = i; j > 0; j--) {
+                compareCounter++;
+                if (array[j] > array[j - 1]) {
+                    swap(j, j - 1);
+                } else break;
+            }
+            if (printDetail) {
+                printArray();
+            }
+        }
+    }
+
+}
+
