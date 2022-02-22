@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Bau7Y1 {
+    static int counter;
     public static void main(String[] args) {
         Random random = new Random();
         Scanner input = new Scanner(System.in);
@@ -20,9 +21,11 @@ public class Bau7Y1 {
         for (int number : numbers) {
             System.out.print(number + " ");
         }
+        System.out.println("So lan random:" + counter);
     }
 
     public static int noDup(int[] numbers, Random random, int i, int max) {
+        counter++;
         int newNum = random.nextInt(max + 1);
         for (int j = 0; j < i; j++) {
             if (numbers[j] == newNum)
