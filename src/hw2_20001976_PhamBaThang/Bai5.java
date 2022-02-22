@@ -9,18 +9,18 @@ public class Bai5 {
     public static void main(String[] args) {
         Character[] unsortedArray = {'s', 'd', 'c', 'a', 'g', 'z'};
         System.out.println("Unsorted Array");
-        // y1
+        // bai1
         printArray(unsortedArray);
         System.out.println("Bubble sort:");
         Sort<Character> bubbleSort = new BubbleSort<>(unsortedArray.clone());
         bubbleSort.sortAsc(true);
         System.out.println(bubbleSort.getDetail());
-        // y2
+        // bai2
         System.out.println("Selection sort:");
         Sort<Character> selectionSort = new SelectionSort<>(unsortedArray.clone());
         selectionSort.sortAsc(true);
         System.out.println(selectionSort.getDetail());
-        // y3
+        // bai3
         System.out.println("Insertion sort:");
         Sort<Character> insertionSort = new InsertionSort<>(unsortedArray.clone());
         insertionSort.sortAsc(true);
