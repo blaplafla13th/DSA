@@ -1,4 +1,4 @@
-package hw1_20001976;
+package hw1_20001976_PhamBaThang;
 
 import java.util.Scanner;
 

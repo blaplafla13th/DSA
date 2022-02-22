@@ -1,4 +1,4 @@
-package hw1_20001976;
+package hw1_20001976_PhamBaThang;
 
 import java.util.Scanner;
 
@@ -28,6 +28,9 @@ public class Bai2 {
     }
 
     public static boolean isPerfect(int number) {
+        if (number == 0) {
+            return false;
+        }
         int sum = 0;
         for (int i = 1; i < number; i++) {
             if (number % i == 0) {

@@ -1,6 +1,6 @@
-package hw1_20001976.bai3;
+package hw1_20001976_PhamBaThang.bai3;
 
-import hw1_20001976.Bai2;
+import hw1_20001976_PhamBaThang.Bai2;
 
 import java.util.Scanner;
 

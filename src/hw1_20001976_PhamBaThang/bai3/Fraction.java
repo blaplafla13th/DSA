@@ -1,4 +1,4 @@
-package hw1_20001976.bai3;
+package hw1_20001976_PhamBaThang.bai3;
 
 public class Fraction {
     private int numerator;
