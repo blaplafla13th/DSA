@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Bau7Y1 {
-    static int counter;
+    static long counter;
     public static void main(String[] args) {
         Random random = new Random();
         Scanner input = new Scanner(System.in);
