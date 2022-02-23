@@ -4,8 +4,6 @@ public class SelectionSort extends Sort {
 
     public SelectionSort(int[] array) {
         this.array = array;
-        swapCounter = 0;
-        compareCounter = 0;
     }
 
     public void sortAsc(boolean printDetail) {

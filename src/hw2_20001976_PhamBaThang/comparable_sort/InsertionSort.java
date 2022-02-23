@@ -4,8 +4,6 @@ public class InsertionSort<T extends Comparable<? super T>> extends Sort<T> {
 
     public InsertionSort(T[] array) {
         this.array = array;
-        swapCounter = 0;
-        compareCounter = 0;
     }
 
     public void sortAsc(boolean printDetail) {

@@ -4,8 +4,6 @@ public class InsertionSort extends Sort {
 
     public InsertionSort(int[] array) {
         this.array = array;
-        swapCounter = 0;
-        compareCounter = 0;
     }
 
     public void sortAsc(boolean printDetail) {

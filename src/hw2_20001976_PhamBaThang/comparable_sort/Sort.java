@@ -1,8 +1,8 @@
 package hw2_20001976_PhamBaThang.comparable_sort;
 
 public abstract class Sort<T extends Comparable<? super T>> {
-    protected int swapCounter;
-    protected int compareCounter;
+    protected int swapCounter = 0;
+    protected int compareCounter = 0;
     protected T[] array;
 
     public int getSwapCounter() {

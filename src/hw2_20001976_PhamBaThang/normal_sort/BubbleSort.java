@@ -4,8 +4,7 @@ public class BubbleSort extends Sort {
 
     public BubbleSort(int[] array) {
         this.array = array;
-        swapCounter = 0;
-        compareCounter = 0;
+
     }
 
     public void sortAsc(boolean printDetail) {

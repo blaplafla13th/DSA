@@ -1,8 +1,8 @@
 package hw2_20001976_PhamBaThang.normal_sort;
 
 public abstract class Sort {
-    protected int swapCounter;
-    protected int compareCounter;
+    protected int swapCounter = 0;
+    protected int compareCounter = 0;
     protected int[] array;
 
     public int getSwapCounter() {
