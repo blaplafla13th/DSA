@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Bau7Y1 {
-    static long counter;
+    static long counter = 0;
     public static void main(String[] args) {
         Random random = new Random();
         Scanner input = new Scanner(System.in);
@@ -12,9 +12,6 @@ public class Bau7Y1 {
         int max = inputNumber(input, "so lon nhat");
         int[] numbers = new int[quantity];
         for (int i = 0; i < quantity; i++) {
-            if (i == 0)
-                numbers[i] = random.nextInt(max + 1);
-            else
                 numbers[i] = noDup(numbers, random, i, max);
         }
         System.out.println("Array: ");
@@ -25,14 +22,23 @@ public class Bau7Y1 {
     }
 
     public static int noDup(int[] numbers, Random random, int i, int max) {
-        counter++;
         int newNum = random.nextInt(max + 1);
-        for (int j = 0; j < i; j++) {
-            if (numbers[j] == newNum)
-                newNum = noDup(numbers, random, i, max);
+        counter++;
+        while (isDup(numbers, i, newNum)) {
+            newNum = random.nextInt(max + 1);
+            counter++;
         }
         return newNum;
     }
+
+    public static boolean isDup(int[] numbers, int i, int newNum) {
+        for (int j = 0; j < i; j++) {
+            if (numbers[j] == newNum)
+                return true;
+        }
+        return false;
+    }
+
 
     public static int inputNumber(Scanner input, String name) {
         int number = 0;
