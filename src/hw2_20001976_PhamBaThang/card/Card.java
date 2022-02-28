@@ -34,7 +34,7 @@ public class Card implements Comparable<Card> {
     }
 
     public void setSuit(String suit) {
-        if (Arrays.asList(SUITS).contains(SUITS))
+        if (Arrays.asList(SUITS).contains(suit))
             this.suit = suit;
         else
             throw new InputMismatchException();
@@ -43,6 +43,7 @@ public class Card implements Comparable<Card> {
 
     @Override
     public int compareTo(Card card) {
+        if (card == null) throw new IllegalArgumentException();
         if (Arrays.asList(SUITS).indexOf(this.suit) > Arrays.asList(SUITS).indexOf(card.suit))
             return 1;
         else if (Arrays.asList(SUITS).indexOf(this.suit) < Arrays.asList(SUITS).indexOf(card.suit))

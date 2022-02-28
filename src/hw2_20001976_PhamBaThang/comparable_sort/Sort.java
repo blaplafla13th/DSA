@@ -21,6 +21,7 @@ public abstract class Sort<T extends Comparable<? super T>> {
     }
 
     public void swap(int indexA, int indexB) {
+        if (array == null) throw new IllegalArgumentException();
         if (indexA == indexB) return;
         T temp = array[indexA];
         array[indexA] = array[indexB];

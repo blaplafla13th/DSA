@@ -7,6 +7,7 @@ public class InsertionSort<T extends Comparable<? super T>> extends Sort<T> {
     }
 
     public void sortAsc(boolean printDetail) {
+        if (array == null) throw new IllegalArgumentException();
         swapCounter = 0;
         compareCounter = 0;
         for (int i = 1; i < array.length; i++) {
@@ -23,6 +24,7 @@ public class InsertionSort<T extends Comparable<? super T>> extends Sort<T> {
     }
 
     public void sortDesc(boolean printDetail) {
+        if (array == null) throw new IllegalArgumentException();
         swapCounter = 0;
         compareCounter = 0;
         for (int i = 1; i < array.length; i++) {

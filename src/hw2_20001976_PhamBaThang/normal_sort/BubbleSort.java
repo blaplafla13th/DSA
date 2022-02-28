@@ -8,6 +8,7 @@ public class BubbleSort extends Sort {
     }
 
     public void sortAsc(boolean printDetail) {
+        if (array == null) throw new IllegalArgumentException();
         swapCounter = 0;
         compareCounter = 0;
         boolean swapped;
@@ -31,6 +32,7 @@ public class BubbleSort extends Sort {
     }
 
     public void sortDesc(boolean printDetail) {
+        if (array == null) throw new IllegalArgumentException();
         swapCounter = 0;
         compareCounter = 0;
         boolean swapped;

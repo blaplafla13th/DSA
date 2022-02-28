@@ -7,6 +7,7 @@ public class SelectionSort extends Sort {
     }
 
     public void sortAsc(boolean printDetail) {
+        if (array == null) throw new IllegalArgumentException();
         swapCounter = 0;
         compareCounter = 0;
         for (int i = 0; i < array.length - 1; i++) {
@@ -24,6 +25,7 @@ public class SelectionSort extends Sort {
     }
 
     public void sortDesc(boolean printDetail) {
+        if (array == null) throw new IllegalArgumentException();
         swapCounter = 0;
         compareCounter = 0;
         for (int i = 0; i < array.length - 1; i++) {

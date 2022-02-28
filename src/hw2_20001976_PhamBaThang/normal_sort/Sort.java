@@ -21,6 +21,7 @@ public abstract class Sort {
     }
 
     public void swap(int indexA, int indexB) {
+        if (array == null) throw new IllegalArgumentException();
         if (indexA == indexB) return;
         int temp = array[indexA];
         array[indexA] = array[indexB];
