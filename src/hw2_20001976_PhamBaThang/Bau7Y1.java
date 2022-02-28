@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Bau7Y1 {
     static long counter = 0;
+
     public static void main(String[] args) {
         Random random = new Random();
         Scanner input = new Scanner(System.in);
@@ -12,7 +13,7 @@ public class Bau7Y1 {
         int max = inputNumber(input, "so lon nhat");
         int[] numbers = new int[quantity];
         for (int i = 0; i < quantity; i++) {
-                numbers[i] = noDup(numbers, random, i, max);
+            numbers[i] = noDup(numbers, random, i, max);
         }
         System.out.println("Array: ");
         for (int number : numbers) {
@@ -47,9 +48,9 @@ public class Bau7Y1 {
             System.out.print("Input " + name + ":");
             try {
                 number = Integer.parseInt(input.nextLine());
-                if (number > 0) {
-                    check = true;
-                }
+                if (number <= 0) {
+                    throw new NumberFormatException("So phai lon hon 0");
+                } else check = true;
             } catch (NumberFormatException e) {
                 e.printStackTrace();
             }
