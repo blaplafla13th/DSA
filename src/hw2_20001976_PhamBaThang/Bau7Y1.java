@@ -11,6 +11,7 @@ public class Bau7Y1 {
         Scanner input = new Scanner(System.in);
         int quantity = inputNumber(input, "so luong");
         int max = inputNumber(input, "so lon nhat");
+        long start = System.currentTimeMillis();
         int[] numbers = new int[quantity];
         for (int i = 0; i < quantity; i++) {
             numbers[i] = noDup(numbers, random, i, max);
@@ -19,7 +20,9 @@ public class Bau7Y1 {
         for (int number : numbers) {
             System.out.print(number + " ");
         }
-        System.out.println("So lan random:" + counter);
+        long end = System.currentTimeMillis();
+        System.out.println();
+        System.out.println("So lan random:" + counter + " het " + (end - start) + " ms");
     }
 
     public static int noDup(int[] numbers, Random random, int i, int max) {
