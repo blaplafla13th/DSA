@@ -22,7 +22,7 @@ public class Bau7Y1 {
         }
         long end = System.currentTimeMillis();
         System.out.println();
-        System.out.println("So lan random:" + counter + " het " + (end - start) + " ms");
+        System.out.println("So lan random " + counter + " het " + (end - start) + " ms");
     }
 
     public static int noDup(int[] numbers, Random random, int i, int max) {
