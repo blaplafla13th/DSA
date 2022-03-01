@@ -48,6 +48,10 @@ public class Bai6Bai7Y2 {
     }
 
     public static void printCards(Card[] cards) {
+        if (cards == null) {
+            System.out.println("null");
+            System.exit(0);
+        }
         for (Card card : cards) {
             System.out.print(card + " ");
         }
@@ -56,6 +60,10 @@ public class Bai6Bai7Y2 {
 
     public static void shuffle(Card[] cards) {
         System.out.println("Shuffle card:");
+        if (cards == null) {
+            System.out.println("null");
+            System.exit(0);
+        }
         Random random = new Random();
         for (int i = cards.length - 1; i > 0; i--) {
             int index = random.nextInt(i + 1);
@@ -64,6 +72,10 @@ public class Bai6Bai7Y2 {
     }
 
     public static void swap(Card[] cards, int indexA, int indexB) {
+        if (cards == null) {
+            System.out.println("null");
+            System.exit(0);
+        }
         if (indexA == indexB) return;
         Card temp = cards[indexA];
         cards[indexA] = cards[indexB];

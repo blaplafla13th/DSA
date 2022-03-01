@@ -28,6 +28,10 @@ public class Bau7Y1 {
     }
 
     public static int noDup(int[] numbers, Random random, int i, int max) {
+        if (numbers == null) {
+            System.out.println("null");
+            System.exit(0);
+        }
         int newNum = random.nextInt(max + 1);
         counter++;
         while (isDup(numbers, i, newNum)) {
@@ -38,6 +42,10 @@ public class Bau7Y1 {
     }
 
     public static boolean isDup(int[] numbers, int i, int newNum) {
+        if (numbers == null) {
+            System.out.println("null");
+            System.exit(0);
+        }
         for (int j = 0; j < i; j++) {
             if (numbers[j] == newNum)
                 return true;

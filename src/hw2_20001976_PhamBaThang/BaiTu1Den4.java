@@ -48,6 +48,10 @@ public class BaiTu1Den4 {
     }
 
     public static void printArray(int[] array) {
+        if (array == null) {
+            System.out.println("null");
+            System.exit(0);
+        }
         System.out.print("Array:");
         for (int i : array) {
             System.out.print(" " + i);

@@ -29,6 +29,10 @@ public class Bai5 {
     }
 
     public static void printArray(Character[] array) {
+        if (array == null) {
+            System.out.println("null");
+            System.exit(0);
+        }
         System.out.print("Array:");
         for (Character i : array) {
             System.out.print(" " + i);
