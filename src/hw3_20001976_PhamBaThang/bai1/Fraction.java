@@ -16,6 +16,7 @@ public class Fraction {
     public Fraction(float number) {
         this.numerator = number;
         denominator = 1;
+        normalize();
     }
 
     public static float gcd(float a, float b) {
@@ -28,10 +29,21 @@ public class Fraction {
     }
 
     public void normalize() {
-        while (this.numerator != Math.floor(this.numerator) || this.denominator != Math.floor(this.denominator)) {
-            this.numerator *= 10;
-            this.denominator *= 10;
+        // anti lech phay dong
+        String num = Float.valueOf(numerator).toString();
+        String den = Float.valueOf(denominator).toString();
+        int number;
+        if (num.contains(".") || den.contains(".")) {
+            number = Math.max(num.length() - num.indexOf("."), den.length() - den.indexOf("."));
+            numerator = Math.round(numerator * Math.pow(10, number));
+            denominator = Math.round(denominator * Math.pow(10, number));
         }
+
+        // lech phay dong
+//        while (this.numerator != Math.floor(this.numerator) || this.denominator != Math.floor(this.denominator)) {
+//            numerator*=10;
+//            denominator*=10;
+//        }
         float gcdVal = gcd(this.numerator, this.denominator);
         this.numerator /= gcdVal;
         this.denominator /= gcdVal;
@@ -42,10 +54,21 @@ public class Fraction {
     }
 
     public Fraction normalize(Fraction c) {
-        while (c.numerator != Math.floor(c.numerator) && c.denominator != Math.floor(c.denominator)) {
-            c.numerator *= 10;
-            c.denominator *= 10;
+        // anti lech phay dong
+        String num = Float.valueOf(c.numerator).toString();
+        String den = Float.valueOf(c.denominator).toString();
+        int number;
+        if (num.contains(".") || den.contains(".")) {
+            number = Math.max(num.length() - num.indexOf("."), den.length() - den.indexOf("."));
+            c.numerator = Math.round(c.numerator * Math.pow(10, number));
+            c.denominator = Math.round(c.denominator * Math.pow(10, number));
         }
+
+        // lech phay dong
+//        while (this.numerator != Math.floor(this.numerator) || this.denominator != Math.floor(this.denominator)) {
+//            numerator*=10;
+//            denominator*=10;
+//        }
         float gcdVal = gcd(c.numerator, c.denominator);
         c.numerator /= gcdVal;
         c.denominator /= gcdVal;
