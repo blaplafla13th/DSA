@@ -69,7 +69,7 @@ public class Fraction {
         return numerator;
     }
 
-    public void setNumerator(int numerator) {
+    public void setNumerator(float numerator) {
         if (numerator == 0) throw new NumberFormatException("Divide zero");
         this.numerator = numerator;
     }
@@ -78,7 +78,7 @@ public class Fraction {
         return denominator;
     }
 
-    public void setDenominator(int denominator) {
+    public void setDenominator(float denominator) {
         this.denominator = denominator;
     }
 

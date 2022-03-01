@@ -11,14 +11,16 @@ public class Bau7Y1 {
         Scanner input = new Scanner(System.in);
         int quantity = inputNumber(input, "so luong");
         int max = inputNumber(input, "so lon nhat");
+        if (max < quantity) {
+            System.out.println("bat kha thi");
+            return;
+        }
         long start = System.currentTimeMillis();
         int[] numbers = new int[quantity];
+        System.out.println("Array: ");
         for (int i = 0; i < quantity; i++) {
             numbers[i] = noDup(numbers, random, i, max);
-        }
-        System.out.println("Array: ");
-        for (int number : numbers) {
-            System.out.print(number + " ");
+            System.out.print(numbers[i] + " ");
         }
         long end = System.currentTimeMillis();
         System.out.println();
