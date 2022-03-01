@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 
 public class Card implements Comparable<Card> {
-    public static final String[] RANKS = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
-    public static final String[] SUITS = {"Spades", "Clubs", "Diamonds", "Hearts"};
+    public static final String[] RANKS = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+    public static final String[] SUITS = {"♠", "♣", "♦", "♥"};
     private String rank;
     private String suit;
 
@@ -53,6 +53,6 @@ public class Card implements Comparable<Card> {
 
     @Override
     public String toString() {
-        return "Card{" + suit + " of " + rank + '}';
+        return "|" + suit + rank + '|';
     }
 }
