@@ -42,5 +42,31 @@ public class Test {
         for (int i = 0; i < simpleLinkedList.size(); i++) {
             System.out.println(simpleLinkedList.get(i));
         }
+        System.out.println();
+        try {
+            System.out.print("Out of index test:");
+            System.out.println(simpleLinkedList.get(-1));
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println(e);
+        }
+        System.out.println();
+        System.out.println("Remove empty test:");
+        simpleLinkedList.remove(-1);
+        System.out.println();
+        System.out.println("Remove anything:");
+        int size = simpleLinkedList.size();
+        System.out.println("Size: " + size);
+        while (!simpleLinkedList.isEmpty()) {
+            simpleLinkedList.removeTop();
+        }
+        System.out.println("After Size: " + simpleLinkedList.size());
+        try {
+
+            for (int i = 0; i < size; i++) {
+                System.out.println(simpleLinkedList.get(i));
+            }
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println(e);
+        }
     }
 }
