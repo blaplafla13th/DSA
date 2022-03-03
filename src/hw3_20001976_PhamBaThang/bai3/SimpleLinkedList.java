@@ -63,7 +63,18 @@ public class SimpleLinkedList<T> {
             }
         }
         return false;
+    }
 
+    public int indexOf(T data) {
+        // Kiểm tra trong danh sách có chứa phần tử data hay không?
+        Node temp = top;
+        for (int j = 0; j < n; j++) {
+            if (temp.getData().equals(data)) return j;
+            else {
+                temp = temp.getNext();
+            }
+        }
+        return -1;
     }
 
     public int size() {
