@@ -14,6 +14,9 @@ public class UseLinkedList {
                 wordCounts.add(wordCount);
             }
         }
+        if (wordCounts.size() == 0) {
+            System.out.println("None word");
+        }
         for (int i = 0; i < wordCounts.size(); i++) {
             System.out.println(wordCounts.get(i));
         }

@@ -14,6 +14,9 @@ public class UseArrayList {
                 wordCounts.add(wordCount);
             }
         }
+        if (wordCounts.size() == 0) {
+            System.out.println("None word");
+        }
         for (WordCount wordCount : wordCounts) {
             System.out.println(wordCount);
         }
