@@ -24,7 +24,7 @@ class GetText {
 
     private static String[] fromInput() {
         System.out.println("Input your paragraph:");
-        String contents = input.nextLine().toLowerCase().replaceAll("[^A-Za-z0-9]", " ");
+        String contents = input.nextLine().toLowerCase().replaceAll("[-+.^:,]", "");
         return contents.split("\\s+");
     }
 
