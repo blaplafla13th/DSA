@@ -10,7 +10,7 @@ class GetText {
         System.out.print("Input your link to file:");
         try {
             File textFile = new File(input.nextLine());
-            StringBuffer contents = new StringBuffer();
+            StringBuilder contents = new StringBuilder();
             input = new Scanner(textFile);
             while (input.hasNextLine()) {
                 contents.append(input.nextLine().toLowerCase().replaceAll("[-+.^:,]", ""));
@@ -31,7 +31,7 @@ class GetText {
     public static String[] getText() {
         String option = "";
         while (!option.equals("1") && !option.equals("2") && !option.equals("0")) {
-            System.out.printf("Option:\n1.From File\n2.From Input\n0.Exit\nInput your option:");
+            System.out.print("Option:\n1.From File\n2.From Input\n0.Exit\nInput your option:");
             option = input.nextLine();
         }
         switch (option) {
