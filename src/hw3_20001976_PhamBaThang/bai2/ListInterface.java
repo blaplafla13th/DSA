@@ -11,6 +11,8 @@ public interface ListInterface<T> extends Iterable<T> {
 
     public boolean isContain(T data); //Kiểm tra phần tử data có trong danh sách
 
+    public int indexOf(T data); //Thứ tự phần tử data có trong danh sách
+
     public int size(); //Kích thước danh sách
 
     public boolean isEmpty(); //Danh sách có rỗng hay không

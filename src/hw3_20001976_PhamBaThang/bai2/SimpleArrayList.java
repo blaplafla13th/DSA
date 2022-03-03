@@ -102,6 +102,18 @@ public class SimpleArrayList<T> implements ListInterface<T> {
     }
 
     @Override
+    public int indexOf(T data) {
+        if (isContain(data)) {
+            for (int i = 0; i < n; i++) {
+                if (array[i] != null && array[i].equals(data)) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+
+    @Override
     public int size() {
         return n;
     }
