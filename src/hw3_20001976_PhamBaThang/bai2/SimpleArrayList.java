@@ -25,7 +25,7 @@ public class SimpleArrayList<T> implements ListInterface<T> {
             array = (T[]) new Object[0];
         }
         if (n >= array.length) {
-            array = Arrays.copyOf(array, array.length + 1);
+            array = Arrays.copyOf(array, array.length * 3 / 2);
         }
         array[n] = data;
         n++;

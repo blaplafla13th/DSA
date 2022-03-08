@@ -5,11 +5,13 @@ import hw3_20001976_PhamBaThang.bai2.SimpleArrayList;
 public class UseArrayList {
     public static void main(String[] args) {
         String[] contents = GetText.getText();
+        WordCount wordCount;
         SimpleArrayList<WordCount> wordCounts = new SimpleArrayList<>();
         for (String word : contents) {
-            WordCount wordCount = new WordCount(word);
-            if (wordCounts.isContain(wordCount)) {
-                wordCounts.get(wordCounts.indexOf(wordCount)).upCount();
+            wordCount = new WordCount(word);
+            int index = wordCounts.indexOf(wordCount);
+            if (index != -1) {
+                wordCounts.get(index).upCount();
             } else {
                 wordCounts.add(wordCount);
             }
@@ -17,8 +19,8 @@ public class UseArrayList {
         if (wordCounts.size() == 0) {
             System.out.println("None word");
         }
-        for (WordCount wordCount : wordCounts) {
-            System.out.println(wordCount);
+        for (WordCount wordCountd : wordCounts) {
+            System.out.println(wordCountd);
         }
     }
 }
