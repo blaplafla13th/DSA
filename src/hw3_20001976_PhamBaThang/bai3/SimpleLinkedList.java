@@ -36,6 +36,8 @@ public class SimpleLinkedList<T> {
     public T get(int i) {
 // Lấy phần tử ở vị trí thứ i
         if (i < 0 || i > n - 1) throw new IndexOutOfBoundsException();
+        if (top == null)
+            return null;
         Node temp = top;
         for (int j = 0; j < i; j++) {
             temp = temp.getNext();
@@ -55,11 +57,21 @@ public class SimpleLinkedList<T> {
 
     public boolean isContain(T data) {
         // Kiểm tra trong danh sách có chứa phần tử data hay không?
-        Node temp = top;
-        for (int j = 0; j < n; j++) {
-            if (temp.getData().equals(data)) return true;
-            else {
-                temp = temp.getNext();
+        if (data == null) {
+            Node temp = top;
+            for (int j = 0; j < n; j++) {
+                if (temp.getData() == null) return true;
+                else {
+                    temp = temp.getNext();
+                }
+            }
+        } else if (!isEmpty()) {
+            Node temp = top;
+            for (int j = 0; j < n; j++) {
+                if (temp.getData().equals(data)) return true;
+                else {
+                    temp = temp.getNext();
+                }
             }
         }
         return false;
@@ -67,11 +79,22 @@ public class SimpleLinkedList<T> {
 
     public int indexOf(T data) {
         // Kiểm tra trong danh sách có chứa phần tử data hay không?
-        Node temp = top;
-        for (int j = 0; j < n; j++) {
-            if (temp.getData().equals(data)) return j;
-            else {
-                temp = temp.getNext();
+        if (data == null) {
+            Node temp = top;
+            for (int j = 0; j < n; j++) {
+                if (temp.getData() == null) return j;
+                else {
+                    temp = temp.getNext();
+                }
+            }
+        }
+        if (!isEmpty()) {
+            Node temp = top;
+            for (int j = 0; j < n; j++) {
+                if (temp.getData().equals(data)) return j;
+                else {
+                    temp = temp.getNext();
+                }
             }
         }
         return -1;

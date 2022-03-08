@@ -2,7 +2,7 @@ package hw3_20001976_PhamBaThang.bai2;
 
 import java.util.Arrays;
 import java.util.Iterator;
-
+@SuppressWarnings({"unchecked"})
 public class SimpleArrayList<T> implements ListInterface<T> {
     private final int defaultSize = 100;
     private transient T[] array;
@@ -25,7 +25,7 @@ public class SimpleArrayList<T> implements ListInterface<T> {
             array = (T[]) new Object[0];
         }
         if (n >= array.length) {
-            array = (T[]) Arrays.copyOf(array, array.length + 1);
+            array = Arrays.copyOf(array, array.length + 1);
         }
         array[n] = data;
         n++;
@@ -41,7 +41,7 @@ public class SimpleArrayList<T> implements ListInterface<T> {
 
     @Override
     public void set(int i, T data) {
-        if (data == null || array == null) {
+        if (array == null) {
             throw new NullPointerException();
         }
         if (i < 0 || i > n) throw new IndexOutOfBoundsException();
@@ -103,7 +103,11 @@ public class SimpleArrayList<T> implements ListInterface<T> {
 
     @Override
     public int indexOf(T data) {
-        if (isContain(data)) {
+        if (data == null) {
+            for (int i = 0; i < n; i++) {
+                if (array[i] == null) return i;
+            }
+        } else if (isContain(data)) {
             for (int i = 0; i < n; i++) {
                 if (array[i] != null && array[i].equals(data)) {
                     return i;
