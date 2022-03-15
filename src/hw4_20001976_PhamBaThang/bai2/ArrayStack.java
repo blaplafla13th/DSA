@@ -19,6 +19,8 @@ public class ArrayStack<E> implements StackInterface<E> {
 
     @Override
     public void push(E element) {
+        if (elementCount + 1 == data.length)
+            throw new IndexOutOfBoundsException();
         data[elementCount++] = element;
     }
 
@@ -56,7 +58,7 @@ public class ArrayStack<E> implements StackInterface<E> {
 
         @Override
         public E next() {
-            return data[currentIndex];
+            return data[currentIndex++];
         }
     }
 }

@@ -23,6 +23,8 @@ public class ArrayQueue<E> implements QueueInterface<E> {
 
     @Override
     public void enqueue(E element) {
+        if (count + 1 == queue.length)
+            throw new IndexOutOfBoundsException();
         queue[(count + 1) % n] = element;
     }
 
