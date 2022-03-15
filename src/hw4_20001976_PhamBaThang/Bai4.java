@@ -15,6 +15,7 @@ public class Bai4 {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        System.out.println("Input Expression: ");
         String function = input.nextLine();
         Bai4 bai4 = new Bai4(function);
         System.out.println(bai4);
@@ -178,14 +179,17 @@ public class Bai4 {
 
 
     public double evaluate() {
+        if (this.expression == null || this.expression.isEmpty()) {
+            return 0.0;
+        }
         LinkedListStack<Operand> values = new LinkedListStack<>();
         LinkedListStack<Operand> operators = new LinkedListStack<>();
         for (Operand operand : expression) {
             if (operand.isNum())
                 values.push(operand);
-            else if (operand.isOpen())
+            else if (operand.isOpen()) {
                 operators.push(operand);
-            else if (operand.isClose()) {
+            } else if (operand.isClose()) {
                 while (!operators.top().isBracketPair(operand))
                     values.push(applyOp(operators.pop(), values.pop(), values.pop()));
                 operators.pop();

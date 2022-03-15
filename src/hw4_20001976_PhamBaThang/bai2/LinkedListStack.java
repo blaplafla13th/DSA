@@ -20,7 +20,9 @@ public class LinkedListStack<E> implements StackInterface<E> {
         if (stack == null)
             throw new EmptyStackException();
         E result = stack.element;
-        stack = stack.next;
+        if (stack.next == null)
+            stack = null;
+        else stack = stack.next;
         return result;
     }
 

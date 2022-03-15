@@ -20,7 +20,9 @@ public class LinkedListQueue<E> implements QueueInterface<E> {
         if (top == null)
             throw new IndexOutOfBoundsException();
         E result = top.element;
-        top = top.next;
+        if (top.next == null)
+            top = null;
+        else top = top.next;
         return result;
     }
 
