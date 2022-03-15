@@ -4,28 +4,29 @@ import java.util.Iterator;
 
 @SuppressWarnings("unchecked")
 public class LinkedListQueue<E> implements QueueInterface<E> {
-    private Node queue = null;
+    private Node top = null;
+    private Node bot = null;
 
     @Override
     public void enqueue(E element) {
-        if (queue == null)
-            queue = new Node(element);
+        if (top == null)
+            bot = top = new Node(element);
         else
-            queue = new Node(element, queue);
+            bot = bot.next = new Node(element);
     }
 
     @Override
     public E dequeue() {
-        if (queue == null)
+        if (top == null)
             throw new IndexOutOfBoundsException();
-        E result = queue.element;
-        queue = queue.next;
+        E result = top.element;
+        top = top.next;
         return result;
     }
 
     @Override
     public boolean isEmpty() {
-        return queue == null;
+        return top == null;
     }
 
     @Override
@@ -49,7 +50,7 @@ public class LinkedListQueue<E> implements QueueInterface<E> {
     }
 
     private class StackIterator<E> implements Iterator<E> {
-        private Node currentNode = queue;
+        private Node currentNode = top;
 
         @Override
         public boolean hasNext() {
