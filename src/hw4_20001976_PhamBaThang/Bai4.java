@@ -9,16 +9,21 @@ import java.util.Scanner;
 public class Bai4 {
     private ArrayList<Operand> expression = new ArrayList<>();
 
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input Expression: ");
+        String function = input.nextLine();
+        Bai4 bai4 = new Bai4(function);
+        System.out.println(bai4);
+    }
+
     public Bai4(String expression) {
         setExpression(expression);
     }
 
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Input Expression: ");
-        String function = input.nextLine();
-        Bai4 bai4 = new Bai4(function);
-        System.out.println(bai4);
+    public void setExpression(String function) {
+        this.expression = validateInputExpression(function);
+        cleanExpression();
     }
 
     public ArrayList<Operand> validateInputExpression(String function) {
@@ -88,7 +93,7 @@ public class Bai4 {
                 // check bracket
             } else if (temp.isOpen())
                 brackets.push(temp);
-            else if (temp.isClose() && !brackets.isEmpty() && !temp.isBracketPair(brackets.pop())) {
+            else if (temp.isClose() && !brackets.isEmpty() && temp.isNotBracketPair(brackets.pop())) {
                 System.out.println("InputMismatchException: Unknown close bracket at " + i);
                 status = false;
             } else if (i + 1 <= converted.size()) {
@@ -116,6 +121,14 @@ public class Bai4 {
                 status = false;
             }
         }
+        if (!brackets.isEmpty()) {
+            System.out.println("Warning: Some bracket are not closed. Auto close");
+            while (!brackets.isEmpty()) {
+                Operand close = brackets.pop();
+                close.data += 3;
+                converted.add(close);
+            }
+        }
         return status;
     }
 
@@ -126,7 +139,7 @@ public class Bai4 {
         int i = 0;
         //combine + - next to each other
         while (i < expression.size()) {
-            if (expression.get(i).isPlusAndSubtract() && expression.get(i + 1).isPlusAndSubtract()) {
+            if (expression.get(i).isOperator() && expression.get(i + 1).isPlusAndSubtract()) {
                 int positive = 1;
                 while (expression.get(i + 1).isPlusAndSubtract()) {
                     positive = positive * ((expression.get(i + 1).data == 0) ? 1 : -1);
@@ -152,11 +165,6 @@ public class Bai4 {
         }
         sb.append("= ");
         return sb.toString();
-    }
-
-    public void setExpression(String function) {
-        this.expression = validateInputExpression(function);
-        cleanExpression();
     }
 
     public boolean hasPrecedence(Operand op1, Operand op2) {
@@ -190,7 +198,7 @@ public class Bai4 {
             else if (operand.isOpen()) {
                 operators.push(operand);
             } else if (operand.isClose()) {
-                while (!operators.top().isBracketPair(operand))
+                while (operators.top().isNotBracketPair(operand))
                     values.push(applyOp(operators.pop(), values.pop(), values.pop()));
                 operators.pop();
             } else if (operand.isOperator()) {
@@ -244,8 +252,8 @@ public class Bai4 {
             return type == 1 && data >= 0 && data <= 4;
         }
 
-        public boolean isBracketPair(Operand op) {
-            return type == 1 && op.type == 1 && (data + 3 == op.data || data - 3 == op.data);
+        public boolean isNotBracketPair(Operand op) {
+            return type != 1 || op.type != 1 || (data + 3 != op.data && data - 3 != op.data);
         }
 
         public boolean isPlusAndSubtract() {
