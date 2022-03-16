@@ -175,6 +175,7 @@ public class Bai4 {
     }
 
     public Operand applyOp(Operand op, Operand b, Operand a) {
+        //minimum jdk14
         return new Operand(switch (op.getData()) {
             case '+' -> a.data + b.data;
             case '-' -> a.data - b.data;
@@ -183,6 +184,15 @@ public class Bai4 {
             case '%' -> a.data % b.data;
             default -> 0;
         });
+//        use this if cant compilier
+//        switch (op.getData()) {
+//            case '+' : return new Operand(a.data + b.data);
+//            case '-' : return new Operand(a.data - b.data);
+//            case '*' : return new Operand(a.data * b.data);
+//            case '/' : return new Operand(a.data / b.data);
+//            case '%' : return new Operand(a.data % b.data);
+//            default : return new Operand( 0);
+//        }
     }
 
 
