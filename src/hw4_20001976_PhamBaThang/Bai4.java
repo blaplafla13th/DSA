@@ -157,7 +157,7 @@ public class Bai4 {
 
     public String getExpression() {
         if (this.expression == null || this.expression.isEmpty()) {
-            return "Nothing";
+            return "Nothing ";
         }
         StringBuilder sb = new StringBuilder();
         for (Operand o : this.expression) {
