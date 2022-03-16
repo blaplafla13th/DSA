@@ -184,7 +184,7 @@ public class Bai4 {
             case '%' -> a.data % b.data;
             default -> 0;
         });
-//        use this if cant compilier
+//        use this if cant compiler
 //        switch (op.getData()) {
 //            case '+' : return new Operand(a.data + b.data);
 //            case '-' : return new Operand(a.data - b.data);
