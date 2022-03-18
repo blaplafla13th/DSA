@@ -19,7 +19,10 @@ public class MazeViewer extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         MazeSolver.findPath(maze, path, startX, startY, endX, endY);
-
+        this.startX = startX;
+        this.startY = startY;
+        this.endX = endX;
+        this.endY = endY;
     }
 
     @Override
@@ -31,13 +34,14 @@ public class MazeViewer extends JFrame {
             maze[y][x] = 5;
         }
         maze[startY][startX] = 4;
-        maze[endY][endX] = 4;
+        maze[endY][endX] = 3;
 
         for (int y = 0; y < maze.length; y++) {
             for (int x = 0; x < maze[0].length; x++) {
                 Color color = switch (maze[y][x]) {
                     case 5 -> Color.GREEN;
                     case 4 -> Color.RED;
+                    case 3 -> Color.YELLOW;
                     case 0 -> Color.WHITE;
                     case 1 -> Color.BLACK;
                     default -> Color.PINK;
