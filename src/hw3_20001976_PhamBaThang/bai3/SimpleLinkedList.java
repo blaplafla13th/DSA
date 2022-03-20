@@ -164,7 +164,7 @@ public class SimpleLinkedList<T> {
                 temp = temp.getNext();
             }
             temp = top;
-            while (temp != null && temp.getNext() != null) {
+            while (temp != null/*thiếu check chỗ này*/ && temp.getNext() != null) {
                 temp = temp.getNext();
             }
             bot = temp;
