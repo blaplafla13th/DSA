@@ -12,8 +12,6 @@ public class InputStartEndPanel extends JFrame {
     private final SpinnerNumberModel maxStartY;
     private final SpinnerNumberModel maxEndX;
     private final SpinnerNumberModel maxEndY;
-    private final int width;
-    private final int height;
     private JPanel secondPanel;
     private JSpinner startX;
     private JSpinner startY;
@@ -28,8 +26,6 @@ public class InputStartEndPanel extends JFrame {
         maxEndX = new SpinnerNumberModel(0, 0, width - 1, 1);
         maxStartY = new SpinnerNumberModel(0, 0, height - 1, 1);
         maxEndY = new SpinnerNumberModel(0, 0, height - 1, 1);
-        this.width = width;
-        this.height = height;
 
         $$$setupUI$$$();
         setContentPane(secondPanel);

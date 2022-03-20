@@ -10,10 +10,5 @@ public class Maze {
         } catch (Exception e) {
             System.out.println("Use Intellij IDEA to run this code. If you are running on Intellij IDEA, try delete out folder");
         }
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            System.out.println(e);
-        }
     }
 }

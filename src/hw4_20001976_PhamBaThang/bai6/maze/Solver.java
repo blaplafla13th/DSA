@@ -5,24 +5,24 @@ import hw4_20001976_PhamBaThang.bai2.LinkedListStack;
 import javax.swing.*;
 import java.awt.*;
 
-public class MazeViewer extends JFrame {
+public class Solver extends JFrame {
     private final int[][] maze;
-    private final LinkedListStack<Position> path = new LinkedListStack<>();
+    private final LinkedListStack<Block> path = new LinkedListStack<>();
     int startX;
     int startY;
     int endX;
     int endY;
 
-    public MazeViewer(int[][] maze, int startX, int startY, int endX, int endY) {
+    public Solver(int[][] maze, int startX, int startY, int endX, int endY) {
         this.maze = maze;
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        MazeSolver.findPath(maze, path, startX, startY, endX, endY);
         this.startX = startX;
         this.startY = startY;
         this.endX = endX;
         this.endY = endY;
+        findPath();
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     @Override
@@ -51,5 +51,24 @@ public class MazeViewer extends JFrame {
             }
         }
 
+    }
+
+    public void findPath() {
+        boolean done = false;
+        path.push(new Block(startY, startX));
+        while (!path.isEmpty() && !done) {
+            Block current = path.top();
+            Block.Movable nextBlock = current.getUnvisitedBlock(maze);
+
+            if (nextBlock == Block.Movable.no)
+                path.pop();
+            else {
+                Block newBlock = current.move(nextBlock);
+                maze[newBlock.getY()][newBlock.getX()] = 2;
+                path.push(newBlock);
+                if (newBlock.getY() == endY && newBlock.getX() == endX)
+                    done = true;
+            }
+        }
     }
 }

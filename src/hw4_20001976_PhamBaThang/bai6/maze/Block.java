@@ -1,10 +1,10 @@
 package hw4_20001976_PhamBaThang.bai6.maze;
 
-public class Position {
+public class Block {
     private final int y;
     private final int x;
 
-    public Position(int y, int x) {
+    public Block(int y, int x) {
         this.y = y;
         this.x = x;
     }
@@ -18,7 +18,7 @@ public class Position {
         return x;
     }
 
-    public Movable getUnvisitedDir(int[][] maze) {
+    public Movable getUnvisitedBlock(int[][] maze) {
         if (x + 1 < maze[0].length) {
             if (maze[y][x + 1] == 0)
                 return Movable.right;
@@ -42,12 +42,12 @@ public class Position {
         return Movable.no;
     }
 
-    public Position move(Movable newDir) {
+    public Block move(Movable newDir) {
         return switch (newDir) {
-            case right -> new Position(y, x + 1);
-            case left -> new Position(y, x - 1);
-            case up -> new Position(y - 1, x);
-            case down -> new Position(y + 1, x);
+            case right -> new Block(y, x + 1);
+            case left -> new Block(y, x - 1);
+            case up -> new Block(y - 1, x);
+            case down -> new Block(y + 1, x);
             default -> null;
         };
     }

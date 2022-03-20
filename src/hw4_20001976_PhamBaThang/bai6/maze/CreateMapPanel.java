@@ -67,9 +67,9 @@ public class CreateMapPanel extends JFrame {
                     }
                 }
                 if (count > 0) {
-                    MazeViewer mazeView = new MazeViewer(map, startX, startY, endX, endY);
-                    mazeView.pack();
-                    mazeView.setVisible(true);
+                    Solver mazeSolver = new Solver(map, startX, startY, endX, endY);
+                    mazeSolver.pack();
+                    mazeSolver.setVisible(true);
 
                 } else {
                     JFrame emptyFrame = new JFrame();
