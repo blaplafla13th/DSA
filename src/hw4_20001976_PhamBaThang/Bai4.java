@@ -50,7 +50,7 @@ public class Bai4 {
 
         // validate input number
         ArrayList<Operand> converted = new ArrayList<>();
-        String[] split = sb.toString().trim().split("\\s*+");
+        String[] split = sb.toString().trim().split("\\s+");
         for (String operand : split) {
             if (operand.equals("")) {
                 continue;
@@ -58,8 +58,8 @@ public class Bai4 {
             if (Operand.isBracketOrOperator(operand.charAt(0))) {
                 Operand c = new Operand(operand.charAt(0));
                 if (converted.size() > 0 &&
-                        converted.get(converted.size() - 1).isNum() &&
-                        c.isOpen())
+                        (converted.get(converted.size() - 1).isNum() || converted.get(converted.size() - 1).isClose())
+                        && c.isOpen())
                     converted.add(new Operand('*'));
                 converted.add(c);
             } else {
@@ -139,7 +139,7 @@ public class Bai4 {
         int i = 0;
         //combine + - next to each other
         while (i < expression.size()) {
-            if (expression.get(i).isOperator() && expression.get(i + 1).isPlusAndSubtract()) {
+            if (expression.get(i).isOperator() || expression.get(i).isOpen() && expression.get(i + 1).isPlusAndSubtract()) {
                 int positive = 1;
                 while (expression.get(i + 1).isPlusAndSubtract()) {
                     positive = positive * ((expression.get(i + 1).data == 0) ? 1 : -1);
