@@ -40,7 +40,6 @@ public class LinkedListStack<E> implements StackInterface<E> {
 
     @Override
     public Iterator<E> iterator() {
-
         return new StackIterator<>();
     }
 
@@ -63,14 +62,11 @@ public class LinkedListStack<E> implements StackInterface<E> {
 
         @Override
         public boolean hasNext() {
-
             return currentNode != null;
         }
 
         @Override
         public E next() {
-
-
             E data = (E) currentNode.element;
             currentNode = currentNode.next;
             return data;

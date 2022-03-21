@@ -26,12 +26,14 @@ public class ArrayQueue<E> implements QueueInterface<E> {
         if (count + 1 == queue.length)
             throw new IndexOutOfBoundsException();
         queue[(count + 1) % n] = element;
+        count++;
     }
 
     @Override
     public E dequeue() {
         E result = queue[top];
         top = (top + 1) % n;
+        count--;
         return result;
     }
 
@@ -42,26 +44,20 @@ public class ArrayQueue<E> implements QueueInterface<E> {
 
     @Override
     public Iterator<E> iterator() {
-
-
         return new ArrayQueueIterator();
-
     }
 
     class ArrayQueueIterator implements Iterator<E> {
         private int current = top;
-
         private int num = 0;
 
         @Override
         public boolean hasNext() {
-
             return num < count;
         }
 
         @Override
         public E next() {
-
             E data = queue[(current + num) % n];
             num++;
             return data;
