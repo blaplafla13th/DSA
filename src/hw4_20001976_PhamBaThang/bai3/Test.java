@@ -2,10 +2,11 @@ package hw4_20001976_PhamBaThang.bai3;
 
 public class Test {
     public static void main(String[] args) {
-        QueueInterface<Integer> queue = new ArrayQueue<>();
+        QueueInterface<Integer> queue = new ArrayQueue<>(4);
         queue.enqueue(1);
         queue.dequeue();
         System.out.println(queue.isEmpty());
+        queue.enqueue(1);
         queue.enqueue(1);
         queue.enqueue(1);
         queue.enqueue(1);

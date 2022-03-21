@@ -23,16 +23,16 @@ public class ArrayQueue<E> implements QueueInterface<E> {
 
     @Override
     public void enqueue(E element) {
-        if (count + 1 == queue.length)
+        if (count + 1 > queue.length)
             throw new IndexOutOfBoundsException();
-        queue[(count + 1) % n] = element;
+        queue[(top + count) % n] = element;
         count++;
     }
 
     @Override
     public E dequeue() {
         E result = queue[top];
-        top = (top + 1) % n;
+        top = (++top) % n;
         count--;
         return result;
     }
