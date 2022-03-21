@@ -9,14 +9,14 @@ public class Bai5 {
         Scanner input = new Scanner(System.in);
         LinkedListQueue<Character> stringQueue = new LinkedListQueue<>();
         System.out.print("Input String: ");
-        String inString = input.nextLine();
-        int i = 0;
-        for (; i <= inString.length() / 2; i++) {
+        String inString = input.nextLine().trim().toLowerCase().replaceAll("[^0-9a-zA-Z]+", "");
+        int mid = inString.length() % 2 == 0 ? inString.length() / 2 : inString.length() / 2 + 1;
+
+        for (int i = 0; i <= mid; i++) {
             stringQueue.enqueue(inString.charAt(i));
         }
-        if (inString.length() % 2 == 1) i++;
-        for (; i < inString.length(); i++) {
-            if (inString.charAt(i) != stringQueue.dequeue()) {
+        for (int j = inString.length() - 1; j >= mid - 1; j--) {
+            if (inString.charAt(j) != stringQueue.dequeue()) {
                 System.out.println("Not Palindrome");
                 return;
             }
