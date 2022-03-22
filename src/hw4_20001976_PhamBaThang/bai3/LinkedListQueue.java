@@ -21,7 +21,7 @@ public class LinkedListQueue<E> implements QueueInterface<E> {
             throw new IndexOutOfBoundsException();
         E result = top.element;
         if (top.next == null)
-            top = null;
+            top = bot = null;
         else top = top.next;
         return result;
     }
