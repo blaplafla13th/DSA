@@ -34,7 +34,7 @@ public class Tower extends JPanel implements MouseListener, MouseMotionListener 
 
         for (int i = 0; i < 10; i++) {
             Rectangle2D.Double rectangle = new Rectangle2D.Double();
-            rectangle.setFrame(getWidth() / 6 - (250 - 20 * i) / 2 + 165, 202 - i * 20, 10 * 25 - 20 * i, 20);
+            rectangle.setFrame((int) (getWidth() / 6 - (250 - 20 * i) / 2 + 165), 202 - i * 20, 10 * 25 - 20 * i, 20);
             stack[0].push(rectangle);
             disk_color[0].push(c[i]);
         }
@@ -130,7 +130,8 @@ public class Tower extends JPanel implements MouseListener, MouseMotionListener 
         g2d.fillRect(0, 0, getWidth(), getHeight());
 
         int holder_x = getWidth() / 6;
-        int holder_y1 = getHeight() - 10 * 20, holder_y2 = getHeight() - 20;
+        int holder_y1 = getHeight() - 10 * 20;
+        int holder_y2 = getHeight() - 20;
 
         g2d.setColor(Color.white);
         g2d.setStroke(new BasicStroke(5));
