@@ -12,11 +12,11 @@ public class Bai5 {
         LinkedListStack<Character> stringStack = new LinkedListStack<>();
         System.out.print("Input String: ");
         String inString = input.nextLine().trim().toLowerCase().replaceAll("[^0-9a-zA-Z]+", "");
-        int mid = inString.length() % 2 == 0 ? inString.length() / 2 : inString.length() / 2 + 1;
+        int mid = inString.length() % 2 == 0 ? inString.length() / 2 - 1 : inString.length() / 2;
 
-        for (int i = 0; i <= mid; i++) {
+        for (int i = 0; i <= inString.length() / 2; i++) {
             stringQueue.enqueue(inString.charAt(i));
-            stringStack.push(inString.charAt(inString.length() - 1 - i));
+            stringStack.push(inString.charAt(mid + i));
         }
         while (!stringStack.isEmpty() && !stringQueue.isEmpty()) {
             if (stringStack.pop() != stringQueue.dequeue()) {
