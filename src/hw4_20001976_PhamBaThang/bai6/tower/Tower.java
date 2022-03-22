@@ -1,60 +1,46 @@
 package hw4_20001976_PhamBaThang.bai6.tower;
 
+import hw4_20001976_PhamBaThang.bai2.LinkedListStack;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.geom.Rectangle2D;
-import java.util.Stack;
+
 
 public class Tower extends JPanel implements MouseListener, MouseMotionListener {
-
-    public static final long serialVersionUID = 0xff;
-    private static Rectangle2D.Double top = null;
-    private Stack<Rectangle2D.Double> s[] = new Stack[3];
-    private Stack<Color> disk_color[] = new Stack[3];
+    private Rectangle2D.Double top = null;
+    private LinkedListStack<Rectangle2D.Double>[] stack = new LinkedListStack[3];
+    private LinkedListStack<Color>[] disk_color = new LinkedListStack[3];
     private Color top_color = null;
-    private double ax, ay, w, h;
-    private boolean draggable = false, firstTime = false;
+    private double ax = 0;
+    private double ay = 0;
+    private double w = 0;
+    private double h = 0;
+    private boolean draggable = false;
 
     public Tower() {
-        firstTime = true;
-        init(4);
-        addMouseListener(this);
-        addMouseMotionListener(this);
-    }
+        Color[] c = {Color.yellow, Color.red, Color.blue, Color.pink, Color.cyan, Color.magenta, Color.green, Color.orange, Color.lightGray, Color.white};
 
-    public void init(int val) {
-        Color c[] = {Color.yellow, Color.red, Color.blue, Color.pink, Color.cyan, Color.magenta, Color.green, Color.orange, Color.lightGray};
+        stack[0] = new LinkedListStack<>();
+        stack[1] = new LinkedListStack<>();
+        stack[2] = new LinkedListStack<>();
 
-        s[0] = new Stack<Rectangle2D.Double>();
-        s[1] = new Stack<Rectangle2D.Double>();
-        s[2] = new Stack<Rectangle2D.Double>();
+        disk_color[0] = new LinkedListStack<>();
+        disk_color[1] = new LinkedListStack<>();
+        disk_color[2] = new LinkedListStack<>();
 
-        disk_color[0] = new Stack<Color>();
-        disk_color[1] = new Stack<Color>();
-        disk_color[2] = new Stack<Color>();
-
-        for (int i = 0; i < val; i++) {
-            Rectangle2D.Double r = new Rectangle2D.Double();
-
-            double x = getWidth() / 6;
-            x = (x == 0) ? 109 : x;
-            double wr = val * 25 - 20 * i;
-            r.setFrame(x - wr / 2, 190 - i * 20, wr, 20);
-            s[0].push(r);
+        for (int i = 0; i < 10; i++) {
+            Rectangle2D.Double rectangle = new Rectangle2D.Double();
+            rectangle.setFrame(getWidth() / 6 - (250 - 20 * i) / 2 + 165, 202 - i * 20, 10 * 25 - 20 * i, 20);
+            stack[0].push(rectangle);
             disk_color[0].push(c[i]);
         }
-
-        top = null;
-        top_color = null;
-        ax = 0.0;
-        ay = 0.0;
-        w = 0.0;
-        h = 0.0;
-        draggable = false;
         repaint();
+        addMouseListener(this);
+        addMouseMotionListener(this);
     }
 
     public void mouseClicked(MouseEvent ev) {
@@ -62,11 +48,11 @@ public class Tower extends JPanel implements MouseListener, MouseMotionListener 
 
     public void mousePressed(MouseEvent ev) {
         Point pos = ev.getPoint();
-        int n = current_tower(pos);
-        if (!s[n].empty()) {
-            top = s[n].peek();
+        int n = currentTower(pos);
+        if (!stack[n].isEmpty()) {
+            top = stack[n].top();
             if (top.contains(pos)) {
-                top = s[n].pop();
+                top = stack[n].pop();
                 top_color = disk_color[n].pop();
                 ax = top.getX();
                 ay = top.getY();
@@ -82,17 +68,17 @@ public class Tower extends JPanel implements MouseListener, MouseMotionListener 
     }
 
     public void mouseReleased(MouseEvent ev) {
-        if (top != null && draggable == true) {
-            int tower = current_tower(ev.getPoint());
+        if (top != null && draggable) {
+            int tower = currentTower(ev.getPoint());
             double x, y;
-            if (!s[tower].empty()) {
-                if (s[tower].peek().getWidth() > top.getWidth())
-                    y = s[tower].peek().getY() - 20;  //calculating ay for dragged disk for placement
+            if (!stack[tower].isEmpty()) {
+                if (stack[tower].top().getWidth() > top.getWidth())
+                    y = stack[tower].top().getY() - 20;  //calculating ay for dragged disk for placement
                 else {
-                    JOptionPane.showMessageDialog(this, "Wrong Move", "Tower Of Hanoi", JOptionPane.ERROR_MESSAGE);
-                    tower = current_tower(new Point((int) ax, (int) ay));
-                    if (!s[tower].empty())
-                        y = s[tower].peek().getY() - 20;
+                    JOptionPane.showMessageDialog(this, "Wrong Move", "", JOptionPane.ERROR_MESSAGE);
+                    tower = currentTower(new Point((int) ax, (int) ay));
+                    if (!stack[tower].isEmpty())
+                        y = stack[tower].top().getY() - 20;
                     else
                         y = getHeight() - 40;
                     //return; //cannot put bigger disk on a smaller one
@@ -102,7 +88,7 @@ public class Tower extends JPanel implements MouseListener, MouseMotionListener 
 
             x = (int) (getWidth() / 6 + (getWidth() / 3) * tower - top.getWidth() / 2);
             top.setFrame(x, y, top.getWidth(), top.getHeight());
-            s[tower].push(top);
+            stack[tower].push(top);
             disk_color[tower].push(top_color);
 
             top = null;
@@ -112,22 +98,29 @@ public class Tower extends JPanel implements MouseListener, MouseMotionListener 
         }
     }
 
-    public void mouseEntered(MouseEvent ev) {
+    @Override
+    public void mouseEntered(MouseEvent mouseEvent) {
+
     }
 
-    public void mouseExited(MouseEvent ev) {
+    @Override
+    public void mouseExited(MouseEvent mouseEvent) {
+
     }
 
-    public void mouseMoved(MouseEvent ev) {
-    }
-
+    @Override
     public void mouseDragged(MouseEvent ev) {
-        int cx = ev.getX();   //getting current mouse position
+        int cx = ev.getX();
         int cy = ev.getY();
-        if (top != null && draggable == true) {
+        if (top != null && draggable) {
             top.setFrame(cx - w, cy - h, top.getWidth(), top.getHeight());
-            repaint();  //repainting if dragging a disk
+            repaint();
         }
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent mouseEvent) {
+
     }
 
     @Override
@@ -150,32 +143,32 @@ public class Tower extends JPanel implements MouseListener, MouseMotionListener 
 
         g2d.setColor(top_color);
 
-        if (draggable == true && top != null)
+        if (draggable && top != null)
             g2d.fill(top);  //drawing dragged disk
 
-        drawtower(g2d, 0); //drawing disks of each tower
-        drawtower(g2d, 1);
-        drawtower(g2d, 2);
+        drawTower(g2d, 0); //drawing disks of each tower
+        drawTower(g2d, 1);
+        drawTower(g2d, 2);
     }
 
-    private void drawtower(Graphics2D g2d, int n) {
-        if (!s[n].empty()) {
-            for (int i = 0; i < s[n].size(); i++) {
+    private void drawTower(Graphics2D g2d, int n) {
+        if (!stack[n].isEmpty()) {
+            for (int i = 0; i < stack[n].size(); i++) {
                 g2d.setColor(disk_color[n].get(i));
-                g2d.fill(s[n].get(i));
+                g2d.fill(stack[n].get(i));
             }
         }
     }
 
-    private int current_tower(Point p) { //return current tower position with respect to Point p
+    private int currentTower(Point p) { //return current tower position with respect to Point p
         Rectangle2D.Double
                 rA = new Rectangle2D.Double(),
                 rB = new Rectangle2D.Double(),
                 rC = new Rectangle2D.Double();
 
-        rA.setFrame(0, 0, getWidth() / 3, getHeight());
-        rB.setFrame(getWidth() / 3, 0, getWidth() / 3, getHeight());
-        rC.setFrame(2 * getWidth() / 3, 0, getWidth() / 3, getHeight());
+        rA.setFrame(0, 0, getWidth() / 3.0, getHeight());
+        rB.setFrame(getWidth() / 3.0, 0, getWidth() / 3.0, getHeight());
+        rC.setFrame(2.0 * getWidth() / 3.0, 0, getWidth() / 3.0, getHeight());
 
         if (rA.contains(p))
             return 0;
@@ -184,6 +177,6 @@ public class Tower extends JPanel implements MouseListener, MouseMotionListener 
         else if (rC.contains(p))
             return 2;
         else
-            return -1;
+            return 0;
     }
 }

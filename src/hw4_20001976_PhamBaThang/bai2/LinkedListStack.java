@@ -6,6 +6,7 @@ import java.util.Iterator;
 @SuppressWarnings("unchecked")
 public class LinkedListStack<E> implements StackInterface<E> {
     private Node stack = null;
+    private int count = 0;
 
     @Override
     public void push(E element) {
@@ -13,6 +14,7 @@ public class LinkedListStack<E> implements StackInterface<E> {
             stack = new Node(element);
         else
             stack = new Node(element, stack);
+        count++;
     }
 
     @Override
@@ -23,6 +25,7 @@ public class LinkedListStack<E> implements StackInterface<E> {
         if (stack.next == null)
             stack = null;
         else stack = stack.next;
+        count--;
         return result;
     }
 
@@ -41,6 +44,21 @@ public class LinkedListStack<E> implements StackInterface<E> {
     @Override
     public Iterator<E> iterator() {
         return new StackIterator<>();
+    }
+
+    public int size() {
+        return count;
+    }
+
+    public E get(int i) {
+        if (i < 0 || i > count - 1) throw new IndexOutOfBoundsException();
+        if (stack == null)
+            return null;
+        Node temp = stack;
+        for (int j = 0; j < i; j++) {
+            temp = temp.next;
+        }
+        return temp.element;
     }
 
     class Node {
