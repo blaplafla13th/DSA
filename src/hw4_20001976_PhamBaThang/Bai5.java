@@ -16,9 +16,7 @@ public class Bai5 {
 
         for (int i = 0; i <= mid; i++) {
             stringQueue.enqueue(inString.charAt(i));
-        }
-        for (int j = inString.length() - 1; j >= mid - 1; j--) {
-            stringStack.push(inString.charAt(j));
+            stringStack.push(inString.charAt(inString.length() - 1 - i));
         }
         while (!stringStack.isEmpty() && !stringQueue.isEmpty()) {
             if (stringStack.pop() != stringQueue.dequeue()) {
