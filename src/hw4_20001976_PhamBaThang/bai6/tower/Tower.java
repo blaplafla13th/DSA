@@ -75,17 +75,15 @@ public class Tower extends JPanel implements MouseListener, MouseMotionListener 
                 if (stack[tower].top().getWidth() > top.getWidth())
                     y = stack[tower].top().getY() - 20;  //calculating ay for dragged disk for placement
                 else {
-                    JOptionPane.showMessageDialog(this, "Wrong Move", "", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Wrong Move", "Wrong move", JOptionPane.ERROR_MESSAGE);
                     tower = currentTower(new Point((int) ax, (int) ay));
                     if (!stack[tower].isEmpty())
                         y = stack[tower].top().getY() - 20;
                     else
                         y = getHeight() - 40;
-                    //return; //cannot put bigger disk on a smaller one
                 }
             } else
-                y = getHeight() - 40;  //if no previous disk in tower
-
+                y = getHeight() - 40;
             x = (int) (getWidth() / 6 + (getWidth() / 3) * tower - top.getWidth() / 2);
             top.setFrame(x, y, top.getWidth(), top.getHeight());
             stack[tower].push(top);
@@ -130,7 +128,7 @@ public class Tower extends JPanel implements MouseListener, MouseMotionListener 
         g2d.fillRect(0, 0, getWidth(), getHeight());
 
         int holder_x = getWidth() / 6;
-        int holder_y1 = getHeight() - 10 * 20;
+        int holder_y1 = getHeight() - 300;
         int holder_y2 = getHeight() - 20;
 
         g2d.setColor(Color.white);
