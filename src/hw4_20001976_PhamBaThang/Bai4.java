@@ -96,7 +96,7 @@ public class Bai4 {
             else if (temp.isClose() && !brackets.isEmpty() && temp.isNotBracketPair(brackets.pop())) {
                 System.out.println("InputMismatchException: Unknown close bracket at " + i);
                 status = false;
-            } else if (i + 1 <= converted.size()) {
+            } else if (i + 1 < converted.size()) {
                 if (temp.isOperator() && (temp.data == 3 || temp.data == 4)
                         && converted.get(i + 1).isNum() && converted.get(i + 1).data == 0) {
                     System.out.println("ArithmeticException: Divide by zero at " + i);
@@ -115,7 +115,7 @@ public class Bai4 {
                     System.out.println("InputMismatchException: bracket closed but don't have anything inside at " + i);
                     status = false;
                 }
-            } //check last
+            }
             else if (i == converted.size() - 1 && !temp.isNum() && !temp.isClose()) {
                 System.out.println("InputMismatchException: number or close bracket must be last");
                 status = false;
