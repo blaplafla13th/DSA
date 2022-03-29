@@ -167,14 +167,14 @@ public class Bai4 {
         return sb.toString();
     }
 
-    public boolean hasPrecedence(Operand op1, Operand op2) {
+    public boolean hasHigherOrder(Operand op1, Operand op2) {
         if (op2.isOpen() || op2.isClose())
             return false;
         return op1.isPlusAndSubtract() ||
                 !op2.isPlusAndSubtract();
     }
 
-    public Operand applyOp(Operand op, Operand b, Operand a) {
+    public Operand calc(Operand op, Operand b, Operand a) {
         //minimum jdk14
         return new Operand(switch (op.getData()) {
             case '+' -> a.data + b.data;
@@ -209,16 +209,16 @@ public class Bai4 {
                 operators.push(operand);
             } else if (operand.isClose()) {
                 while (operators.top().isNotBracketPair(operand))
-                    values.push(applyOp(operators.pop(), values.pop(), values.pop()));
+                    values.push(calc(operators.pop(), values.pop(), values.pop()));
                 operators.pop();
             } else if (operand.isOperator()) {
-                while (!operators.isEmpty() && hasPrecedence(operand, operators.top()))
-                    values.push(applyOp(operators.pop(), values.pop(), values.pop()));
+                while (!operators.isEmpty() && hasHigherOrder(operand, operators.top()))
+                    values.push(calc(operators.pop(), values.pop(), values.pop()));
                 operators.push(operand);
             }
         }
         while (!operators.isEmpty())
-            values.push(applyOp(operators.pop(), values.pop(), values.pop()));
+            values.push(calc(operators.pop(), values.pop(), values.pop()));
         return values.pop().data;
     }
 
