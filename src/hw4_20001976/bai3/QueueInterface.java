@@ -6,4 +6,6 @@ public interface QueueInterface<E> extends Iterable<E> {
     E dequeue();
 
     boolean isEmpty();
+
+    int size();
 }

@@ -6,6 +6,7 @@ import java.util.Iterator;
 public class LinkedListQueue<E> implements QueueInterface<E> {
     private Node top = null;
     private Node bot = null;
+    private int count = 0;
 
     @Override
     public void enqueue(E element) {
@@ -13,6 +14,7 @@ public class LinkedListQueue<E> implements QueueInterface<E> {
             bot = top = new Node(element);
         else
             bot = bot.next = new Node(element);
+        count++;
     }
 
     @Override
@@ -23,12 +25,18 @@ public class LinkedListQueue<E> implements QueueInterface<E> {
         if (top.next == null)
             top = bot = null;
         else top = top.next;
+        count--;
         return result;
     }
 
     @Override
     public boolean isEmpty() {
         return top == null;
+    }
+
+    @Override
+    public int size() {
+        return count;
     }
 
     @Override

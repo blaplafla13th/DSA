@@ -43,6 +43,11 @@ public class ArrayQueue<E> implements QueueInterface<E> {
     }
 
     @Override
+    public int size() {
+        return count;
+    }
+
+    @Override
     public Iterator<E> iterator() {
         return new ArrayQueueIterator();
     }

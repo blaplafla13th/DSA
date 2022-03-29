@@ -5,10 +5,10 @@ public class Client {
     private String phoneNumber;
     private String info;
 
-    public Client(String name, String phoneNumber, String idNumber) {
+    public Client(String name, String phoneNumber, String info) {
         this.name = name;
         this.phoneNumber = phoneNumber;
-        this.info = idNumber;
+        this.info = info;
     }
 
     public String getName() {
@@ -33,5 +33,14 @@ public class Client {
 
     public void setInfo(String info) {
         this.info = info;
+    }
+
+    @Override
+    public String toString() {
+        return "Client:\n" +
+                "name='" + name + '\'' +
+                "\nphoneNumber='" + phoneNumber + '\'' +
+                "\ninfo='" + info + '\'' +
+                ':';
     }
 }
