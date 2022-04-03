@@ -28,7 +28,7 @@ public class ArrayBinaryTree<E> implements BinaryTreeInterface<E, Integer> {
         if (p == null) {
             System.out.println("Node unknown");
             return -1;
-        } else if (p < 0 || p > array.length) {
+        } else if (p < 0 || p >= array.length) {
             System.out.println("Out of index");
             return -1;
         }
@@ -37,10 +37,12 @@ public class ArrayBinaryTree<E> implements BinaryTreeInterface<E, Integer> {
             return -1;
         }
         int index = 2 * p + 1;
-        if (index < 0 || index > array.length)
+        if (index < 0 || index >= array.length) {
             System.out.println("Out of index");
-        else if (array[index] != null) {
+            return -1;
+        } else if (array[index] != null) {
             System.out.println("Node has left already");
+            return -1;
         } else {
             array[index] = element;
             n++;
@@ -53,7 +55,7 @@ public class ArrayBinaryTree<E> implements BinaryTreeInterface<E, Integer> {
         if (p == null) {
             System.out.println("Node unknown");
             return -1;
-        } else if (p < 0 || p > array.length) {
+        } else if (p < 0 || p >= array.length) {
             System.out.println("Out of index");
             return -1;
         }
@@ -62,7 +64,7 @@ public class ArrayBinaryTree<E> implements BinaryTreeInterface<E, Integer> {
             return -1;
         }
         int index = 2 * p + 2;
-        if (index < 0 || index > array.length) {
+        if (index < 0 || index >= array.length) {
             System.out.println("Out of index");
             return -1;
         } else if (array[index] != null) {
@@ -78,7 +80,7 @@ public class ArrayBinaryTree<E> implements BinaryTreeInterface<E, Integer> {
     public void set(Integer p, E element) {
         if (p == null)
             System.out.println("Node unknown");
-        else if (p < 0 || p > array.length)
+        else if (p < 0 || p >= array.length)
             System.out.println("Out of index");
         else if (array[p] == null)
             System.out.println("Node unknown");
@@ -90,11 +92,11 @@ public class ArrayBinaryTree<E> implements BinaryTreeInterface<E, Integer> {
     public void setLeft(Integer p, E element) {
         if (p == null)
             System.out.println("Node unknown");
-        else if (p < 0 || p > array.length) {
+        else if (p < 0 || p >= array.length) {
             System.out.println("Out of index");
         } else if (array[p] == null) {
             System.out.println("Node unknown");
-        } else if (2 * p + 1 < 0 || 2 * p + 1 > array.length)
+        } else if (2 * p + 1 < 0 || 2 * p + 1 >= array.length)
             System.out.println("Out of index");
         else if (array[2 * p + 1] != null)
             array[2 * p + 1] = element;
@@ -105,11 +107,11 @@ public class ArrayBinaryTree<E> implements BinaryTreeInterface<E, Integer> {
     public void setRight(Integer p, E element) {
         if (p == null)
             System.out.println("Node unknown");
-        else if (p < 0 || p > array.length) {
+        else if (p < 0 || p >= array.length) {
             System.out.println("Out of index");
         } else if (array[p] == null) {
             System.out.println("Node unknown");
-        } else if (2 * p + 1 < 0 || 2 * p + 1 > array.length)
+        } else if (2 * p + 1 < 0 || 2 * p + 1 >= array.length)
             System.out.println("Out of index");
         else if (array[2 * p + 2] != null)
             array[2 * p + 2] = element;
@@ -137,7 +139,7 @@ public class ArrayBinaryTree<E> implements BinaryTreeInterface<E, Integer> {
         if (p == null) {
             System.out.println("Node unknown");
             return 0;
-        } else if (p < 0 || p > array.length) {
+        } else if (p < 0 || p >= array.length) {
             System.out.println("Out of index");
             return 0;
         } else if (array[p] == null) {
@@ -153,7 +155,7 @@ public class ArrayBinaryTree<E> implements BinaryTreeInterface<E, Integer> {
 
     @Override
     public Integer parent(Integer p) {
-        if (p <= 0 || p > array.length || (p - 1) / 2 > array.length) {
+        if (p <= 0 || p >= array.length || (p - 1) / 2 >= array.length) {
             System.out.println("Out of index");
             return -1;
         } else if (array[p] == null) {
@@ -168,7 +170,7 @@ public class ArrayBinaryTree<E> implements BinaryTreeInterface<E, Integer> {
         if (p == null) {
             System.out.println("Node unknown");
             return -1;
-        } else if (p < 0 || p > array.length || 2 * p + 1 < 0 || 2 * p + 1 > array.length) {
+        } else if (p < 0 || p >= array.length || 2 * p + 1 < 0 || 2 * p + 1 >= array.length) {
             System.out.println("Out of index");
             return -1;
         } else if (array[p] == null) {
@@ -187,7 +189,7 @@ public class ArrayBinaryTree<E> implements BinaryTreeInterface<E, Integer> {
         if (p == null) {
             System.out.println("Node unknown");
             return -1;
-        } else if (p < 0 || p > array.length || 2 * p + 2 < 0 || 2 * p + 2 > array.length) {
+        } else if (p < 0 || p >= array.length || 2 * p + 2 < 0 || 2 * p + 2 >= array.length) {
             System.out.println("Out of index");
             return -1;
         } else if (array[p] == null) {
@@ -203,7 +205,7 @@ public class ArrayBinaryTree<E> implements BinaryTreeInterface<E, Integer> {
 
     @Override
     public Integer sibling(Integer p) {
-        if (p <= 0 || p > array.length || (p - 1) / 2 > array.length) {
+        if (p <= 0 || p >= array.length || (p - 1) / 2 >= array.length) {
             System.out.println("Out of index");
             return -1;
         } else if (array[p] == null) {
@@ -219,7 +221,7 @@ public class ArrayBinaryTree<E> implements BinaryTreeInterface<E, Integer> {
 
     @Override
     public E value(Integer p) {
-        if (p < 0 || p > array.length) {
+        if (p < 0 || p >= array.length) {
             System.out.println("Out of index");
             return null;
         }
