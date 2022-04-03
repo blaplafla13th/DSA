@@ -36,7 +36,7 @@ public class LinkedBinaryTree<E> implements BinaryTreeInterface<E, LinkedBinaryT
         if (p == null) {
             System.out.println("Node unknown");
             return null;
-        } else if (p.left != null) {
+        } else if (p.right != null) {
             System.out.println("Node has right already");
         } else {
             p.right = new Node<>(element, p, null, null);
@@ -155,7 +155,7 @@ public class LinkedBinaryTree<E> implements BinaryTreeInterface<E, LinkedBinaryT
         return p.data;
     }
 
-    protected static class Node<E> {
+    public static class Node<E> {
         private E data; // an data stored at this node
         private Node<E> parent; // a reference to the parent node (if any)
         private Node<E> left; // a reference to the left child
