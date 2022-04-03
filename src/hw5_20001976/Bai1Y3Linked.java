@@ -12,8 +12,7 @@ public class Bai1Y3Linked {
 
     public static void main(String[] args) {
         LinkedBinaryTree<Integer> linkedBinaryTree = new LinkedBinaryTree<>();
-        linkedBinaryTree.addRoot(0);
-        add(linkedBinaryTree.root(), 0, linkedBinaryTree, 0, 2);
+        add(linkedBinaryTree.addRoot(0), 0, linkedBinaryTree, 0, 2);
         try {
             if (file.exists()) {
                 file.delete(); // remove old file
