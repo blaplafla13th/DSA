@@ -31,4 +31,6 @@ public interface BinaryTreeInterface<E, T> {
     T sibling(T p); // return sibling of p
 
     E value(T p); // return value of p
+
+    int height(T p); // height of tree
 }

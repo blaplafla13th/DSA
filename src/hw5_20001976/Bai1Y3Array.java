@@ -13,6 +13,7 @@ public class Bai1Y3Array {
         ArrayBinaryTree<Integer> arrayBinaryTree = new ArrayBinaryTree<>(7);
         arrayBinaryTree.addRoot(0);
         add(0, 0, arrayBinaryTree);
+        System.out.println(arrayBinaryTree.height(0));
         try {
             if (file.exists()) {
                 file.delete(); // remove old file

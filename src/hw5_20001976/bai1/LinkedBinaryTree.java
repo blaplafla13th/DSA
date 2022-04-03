@@ -155,6 +155,12 @@ public class LinkedBinaryTree<E> implements BinaryTreeInterface<E, LinkedBinaryT
         return p.data;
     }
 
+    @Override
+    public int height(Node<E> p) {
+        return this.isEmpty() ? -1 : 1 + Math.max(p.left != null ? this.height(this.left(p)) : 0,
+                p.right != null ? this.height(this.right(p)) : 0);
+    }
+
     public static class Node<E> {
         private E data; // an data stored at this node
         private Node<E> parent; // a reference to the parent node (if any)

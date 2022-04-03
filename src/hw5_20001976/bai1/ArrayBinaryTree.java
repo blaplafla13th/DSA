@@ -3,10 +3,10 @@ package hw5_20001976.bai1;
 public class ArrayBinaryTree<E> implements BinaryTreeInterface<E, Integer> {
     private E[] array;
     private int n = 0;
-    private int defaultsize = 100;
+    private final int DEFAULT_SIZE = 100;
 
     public ArrayBinaryTree() {
-        array = (E[]) new Object[defaultsize];
+        array = (E[]) new Object[DEFAULT_SIZE];
     }
 
     public ArrayBinaryTree(int size) {
@@ -226,5 +226,11 @@ public class ArrayBinaryTree<E> implements BinaryTreeInterface<E, Integer> {
             return null;
         }
         return array[p];
+    }
+
+    @Override
+    public int height(Integer p) {
+        return this.isEmpty() ? -1 : 1 + Math.max((2 * p + 1 >= 0 && 2 * p + 1 < array.length) ? this.height(this.left(p)) : 0,
+                (2 * p + 2 >= 0 && 2 * p + 2 < array.length) ? this.height(this.right(p)) : 0);
     }
 }
