@@ -1,4 +1,5 @@
 package hw5_20001976.bai1;
+
 @SuppressWarnings("unchecked")
 public class ArrayBinaryTree<E> implements BinaryTreeInterface<E, Integer> {
     private E[] array;
@@ -230,7 +231,8 @@ public class ArrayBinaryTree<E> implements BinaryTreeInterface<E, Integer> {
 
     @Override
     public int height(Integer p) {
-        return this.isEmpty() ? -1 : 1 + Math.max((2 * p + 1 >= 0 && 2 * p + 1 < array.length) ? this.height(this.left(p)) : 0,
-                (2 * p + 2 >= 0 && 2 * p + 2 < array.length) ? this.height(this.right(p)) : 0);
+        return this.isEmpty() ? -1 : 1 +
+                Math.max((2 * p + 1 >= 0 && 2 * p + 1 < array.length) ? this.height(this.left(p)) : 0,
+                        (2 * p + 2 >= 0 && 2 * p + 2 < array.length) ? this.height(this.right(p)) : 0);
     }
 }

@@ -32,5 +32,5 @@ public interface BinaryTreeInterface<E, T> {
 
     E value(T p); // return value of p
 
-    int height(T p); // height of tree
+    int height(T p); // height of tree from p
 }
