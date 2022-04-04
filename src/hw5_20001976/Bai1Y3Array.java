@@ -10,9 +10,10 @@ public class Bai1Y3Array {
     static File file = new File("out.txt");
 
     public static void main(String[] args) {
-        ArrayBinaryTree<Integer> arrayBinaryTree = new ArrayBinaryTree<>(7);
-        arrayBinaryTree.addRoot(0);
-        add(0, 0, arrayBinaryTree);
+        int layer = 3;
+        int maxSize = (int) Math.pow(2, layer) - 1;
+        ArrayBinaryTree<Integer> arrayBinaryTree = new ArrayBinaryTree<>(maxSize);
+        add(arrayBinaryTree.addRoot(0), 0, arrayBinaryTree, 0, layer);
         System.out.println(arrayBinaryTree.height(0));
         try {
             if (file.exists()) {
@@ -30,12 +31,10 @@ public class Bai1Y3Array {
 //    3       4   5       6
     }
 
-    public static void add(int position, int startVal, ArrayBinaryTree<Integer> array) {
-        if (position <= 2 && position >= 0) {
-            int left = array.addLeft(position, ++startVal);
-            add(left, startVal + 1, array);
-            int right = array.addRight(position, ++startVal);
-            add(right, startVal + 2, array);
+    public static void add(int startPosition, int startValue, ArrayBinaryTree<Integer> array, int height, int maxHeight) {
+        if (height < maxHeight - 1) {
+            add(array.addLeft(startPosition, 2 * startValue + 1), 2 * startValue + 1, array, height + 1, maxHeight);
+            add(array.addRight(startPosition, 2 * startValue + 2), 2 * startValue + 2, array, height + 1, maxHeight);
         }
     }
 

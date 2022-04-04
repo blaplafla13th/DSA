@@ -12,7 +12,7 @@ public class Bai1Y3Linked {
 
     public static void main(String[] args) {
         LinkedBinaryTree<Integer> linkedBinaryTree = new LinkedBinaryTree<>();
-        add(linkedBinaryTree.addRoot(0), 0, linkedBinaryTree, 0, 2);
+        add(linkedBinaryTree.addRoot(0), 0, linkedBinaryTree, 0, 3);
         System.out.println(linkedBinaryTree.height(linkedBinaryTree.root()));
         try {
             if (file.exists()) {
@@ -31,7 +31,7 @@ public class Bai1Y3Linked {
     }
 
     public static void add(Node<Integer> startPosition, int startValue, LinkedBinaryTree<Integer> list, int height, int maxHeight) {
-        if (height < maxHeight) {
+        if (height < maxHeight - 1) {
             add(list.addLeft(startPosition, 2 * startValue + 1), 2 * startValue + 1, list, height + 1, maxHeight);
             add(list.addRight(startPosition, 2 * startValue + 2), 2 * startValue + 2, list, height + 1, maxHeight);
         }
