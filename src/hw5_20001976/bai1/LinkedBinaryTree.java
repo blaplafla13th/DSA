@@ -157,7 +157,7 @@ public class LinkedBinaryTree<E> implements BinaryTreeInterface<E, LinkedBinaryT
 
     @Override
     public int height(Node<E> p) {
-        return this.isEmpty() ? -1 : 1 + Math.max(p.left != null ? this.height(this.left(p)) : 0,
+        return this.isEmpty() ? 0 : 1 + Math.max(p.left != null ? this.height(this.left(p)) : 0,
                 p.right != null ? this.height(this.right(p)) : 0);
     }
 
@@ -175,6 +175,7 @@ public class LinkedBinaryTree<E> implements BinaryTreeInterface<E, LinkedBinaryT
             this.left = left;
             this.right = right;
         }
+
 
     }
 }

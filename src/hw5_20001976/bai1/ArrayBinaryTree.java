@@ -121,6 +121,8 @@ public class ArrayBinaryTree<E> implements BinaryTreeInterface<E, Integer> {
 
     @Override
     public Integer root() {
+        if (this.isEmpty())
+            return -1;
         return 0;
     }
 
@@ -231,7 +233,7 @@ public class ArrayBinaryTree<E> implements BinaryTreeInterface<E, Integer> {
 
     @Override
     public int height(Integer p) {
-        return this.isEmpty() ? -1 : 1 +
+        return this.isEmpty() || ((p < 0 || p > array.length) || array[p] != null) ? 0 : 1 +
                 Math.max((2 * p + 1 >= 0 && 2 * p + 1 < array.length) ? this.height(this.left(p)) : 0,
                         (2 * p + 2 >= 0 && 2 * p + 2 < array.length) ? this.height(this.right(p)) : 0);
     }
