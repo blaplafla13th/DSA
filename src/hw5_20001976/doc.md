@@ -143,6 +143,8 @@ ArrayBinaryTree()
 
 ### Class Bai1Y3Array
 
+#### Field
+
 | Modifier and Type |   Field   | Description           |
 |:-----------------:|:---------:|:----------------------|
 | static Formatter  | formatter | export to file        |
@@ -166,3 +168,17 @@ Reference: https://www.geeksforgeeks.org/print-binary-tree-2-dimensions/
 #### Sub Classes
 
 ##### TreeView
+
+###### Field
+
+|       Modifier and Type       |   Field    | Description        |
+|:-----------------------------:|:----------:|:-------------------|
+| protected LinkedBinaryTree<E> |    tree    | tree will be print |
+|          private int          | treeHeight | height of tree     |
+
+###### Method
+
+| Modifier and Type |                                                       Method                                                        | Description                                                         |
+|:-----------------:|:-------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------|
+|  protected void   | drawTree(Graphics g, int minX, int maxX, int y, int yStep, LinkedBinaryTree.Node<E> node, LinkedBinaryTree<E> tree) | draw a tree from node with node data and line to children node data |
+|  protected void   |                                             paintComponent(Graphics g)                                              | draw tree in frame                                                  |
