@@ -12,7 +12,7 @@ public class Bai1Y3Linked {
 
     public static void main(String[] args) {
         LinkedBinaryTree<Integer> linkedBinaryTree = new LinkedBinaryTree<>();
-        add(linkedBinaryTree.addRoot(0), 0, linkedBinaryTree, 0, 3);
+        add(linkedBinaryTree.addRoot(0), 0, linkedBinaryTree, 0, 10);
         System.out.println(linkedBinaryTree.height(linkedBinaryTree.root()));
         try {
             if (file.exists()) {

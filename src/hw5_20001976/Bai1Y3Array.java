@@ -22,7 +22,7 @@ public class Bai1Y3Array {
         } catch (Exception e) {
             System.out.println(e);
         }
-        print(0, 0, arrayBinaryTree);
+        print(arrayBinaryTree.root(), 0, arrayBinaryTree);
         formatter.flush();
         formatter.close();
         // 7 node tree
@@ -37,7 +37,6 @@ public class Bai1Y3Array {
             add(array.addRight(startPosition, 2 * startValue + 2), 2 * startValue + 2, array, height + 1, maxHeight);
         }
     }
-
     public static void print(int position, int space, ArrayBinaryTree<Integer> array) {
         try {
             if (!file.exists()) {

@@ -13,11 +13,12 @@ import static hw5_20001976.Bai1Y3Linked.add;
 public class P869 {
     public static void main(String[] args) {
         LinkedBinaryTree<Integer> list = new LinkedBinaryTree<>();
-        add(list.addRoot(0), 0, list, 0, 5);
+        add(list.addRoot(0), 0, list, 0, 10);
         TreeView<Integer> treeView = new TreeView<>(list);
     }
 }
 
+// https://www.cs.williams.edu/~freund/cs136-073/lectures/lecture22/infinite-cleanedup/BinaryTreeView.java
 class TreeView<E> extends JPanel {
     protected LinkedBinaryTree<E> tree;
     protected int treeHeight;
