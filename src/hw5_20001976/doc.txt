@@ -182,3 +182,5 @@ Reference: https://www.geeksforgeeks.org/print-binary-tree-2-dimensions/
 |:-----------------:|:-------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------|
 |  protected void   | drawTree(Graphics g, int minX, int maxX, int y, int yStep, LinkedBinaryTree.Node<E> node, LinkedBinaryTree<E> tree) | draw a tree from node with node data and line to children node data |
 |  protected void   |                                             paintComponent(Graphics g)                                              | draw tree in frame                                                  |
+
+Reference: https://www.cs.williams.edu/~freund/cs136-073/lectures/lecture22/infinite-cleanedup/BinaryTreeView.java

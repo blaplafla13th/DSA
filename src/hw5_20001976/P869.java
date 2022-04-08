@@ -18,7 +18,6 @@ public class P869 {
     }
 }
 
-// https://www.cs.williams.edu/~freund/cs136-073/lectures/lecture22/infinite-cleanedup/BinaryTreeView.java
 class TreeView<E> extends JPanel {
     protected LinkedBinaryTree<E> tree;
     protected int treeHeight;
@@ -41,7 +40,7 @@ class TreeView<E> extends JPanel {
     protected void drawTree(Graphics g, int minX, int maxX,
                             int y, int yStep, Node<E> node, LinkedBinaryTree<E> tree) {
         String s = tree.value(node).toString(); // get data of node
-
+        // get text size
         FontMetrics fm = g.getFontMetrics();
         int width = fm.stringWidth(s);
         int height = fm.getHeight();
