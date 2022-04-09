@@ -1,5 +1,8 @@
 package hw5_20001976.bai1;
 
+import java.io.OutputStream;
+import java.io.PrintStream;
+
 public interface BinaryTreeInterface<E, T> {
 
     T addRoot(E element); // Add element to root of an empty tree
@@ -33,4 +36,70 @@ public interface BinaryTreeInterface<E, T> {
     E value(T p); // return value of p
 
     int height(T p); // height of tree from p
+
+    public default String preOrderPrint(T p) {
+        StringBuilder s = new StringBuilder();
+        PrintStream out = System.out;
+        System.setOut(new PrintStream(OutputStream.nullOutputStream()));
+        if (this.value(p) != null) {
+            //root
+            s.append(this.value(p) + " ");
+            //left
+            if (this.left(p) != null && this.left(p) != new Integer(-1)) {
+                s.append(this.preOrderPrint(this.left(p)));
+            }
+            //right
+            if (this.right(p) != null && this.right(p) != new Integer(-1)) {
+                s.append(this.preOrderPrint(this.right(p)));
+            }
+            return s.toString();
+        }
+        return "";
+    }
+
+    ;
+
+    public default String postOrderPrint(T p) {
+        StringBuilder s = new StringBuilder();
+        PrintStream out = System.out;
+        System.setOut(new PrintStream(OutputStream.nullOutputStream()));
+        if (this.value(p) != null) {
+            //left
+            if (this.left(p) != null && this.left(p) != new Integer(-1)) {
+                s.append(this.preOrderPrint(this.left(p)));
+            }
+            //right
+            if (this.right(p) != null && this.right(p) != new Integer(-1)) {
+                s.append(this.preOrderPrint(this.right(p)));
+            }
+            //root
+            s.append(this.value(p) + " ");
+            return s.toString();
+        }
+        return "";
+    }
+
+    ;
+
+    public default String inOrderPrint(T p) {
+        StringBuilder s = new StringBuilder();
+        PrintStream out = System.out;
+        System.setOut(new PrintStream(OutputStream.nullOutputStream()));
+        if (this.value(p) != null) {
+            //left
+            if (this.left(p) != null && this.left(p) != new Integer(-1)) {
+                s.append(this.preOrderPrint(this.left(p)));
+            }
+            //root
+            s.append(this.value(p) + " ");
+            //right
+            if (this.right(p) != null && this.right(p) != new Integer(-1)) {
+                s.append(this.preOrderPrint(this.right(p)));
+            }
+            return s.toString();
+        }
+        return "";
+    }
+
+
 }
