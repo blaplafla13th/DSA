@@ -37,19 +37,18 @@ public interface BinaryTreeInterface<E, T> {
 
     int height(T p); // height of tree from p
 
-    public default String preOrderPrint(T p) {
+    default String preOrderPrint(T p) {
         StringBuilder s = new StringBuilder();
-        PrintStream out = System.out;
         System.setOut(new PrintStream(OutputStream.nullOutputStream()));
         if (this.value(p) != null) {
             //root
-            s.append(this.value(p) + " ");
+            s.append(this.value(p)).append(" ");
             //left
-            if (this.left(p) != null && this.left(p) != new Integer(-1)) {
+            if (this.left(p) != null && !this.left(p).equals(-1)) {
                 s.append(this.preOrderPrint(this.left(p)));
             }
             //right
-            if (this.right(p) != null && this.right(p) != new Integer(-1)) {
+            if (this.right(p) != null && !this.right(p).equals(-1)) {
                 s.append(this.preOrderPrint(this.right(p)));
             }
             return s.toString();
@@ -57,49 +56,42 @@ public interface BinaryTreeInterface<E, T> {
         return "";
     }
 
-    ;
-
-    public default String postOrderPrint(T p) {
+    default String postOrderPrint(T p) {
         StringBuilder s = new StringBuilder();
-        PrintStream out = System.out;
         System.setOut(new PrintStream(OutputStream.nullOutputStream()));
         if (this.value(p) != null) {
             //left
-            if (this.left(p) != null && this.left(p) != new Integer(-1)) {
+            if (this.left(p) != null && !this.left(p).equals(-1)) {
                 s.append(this.preOrderPrint(this.left(p)));
             }
             //right
-            if (this.right(p) != null && this.right(p) != new Integer(-1)) {
+            if (this.right(p) != null && !this.right(p).equals(-1)) {
                 s.append(this.preOrderPrint(this.right(p)));
             }
             //root
-            s.append(this.value(p) + " ");
+            s.append(this.value(p)).append(" ");
             return s.toString();
         }
         return "";
     }
 
-    ;
-
-    public default String inOrderPrint(T p) {
+    default String inOrderPrint(T p) {
         StringBuilder s = new StringBuilder();
-        PrintStream out = System.out;
         System.setOut(new PrintStream(OutputStream.nullOutputStream()));
         if (this.value(p) != null) {
             //left
-            if (this.left(p) != null && this.left(p) != new Integer(-1)) {
+            if (this.left(p) != null && !this.left(p).equals(-1)) {
                 s.append(this.preOrderPrint(this.left(p)));
             }
             //root
-            s.append(this.value(p) + " ");
+            s.append(this.value(p)).append(" ");
             //right
-            if (this.right(p) != null && this.right(p) != new Integer(-1)) {
+            if (this.right(p) != null && !this.right(p).equals(-1)) {
                 s.append(this.preOrderPrint(this.right(p)));
             }
             return s.toString();
         }
         return "";
     }
-
 
 }
