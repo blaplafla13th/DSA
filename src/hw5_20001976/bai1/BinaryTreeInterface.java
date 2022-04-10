@@ -62,11 +62,11 @@ public interface BinaryTreeInterface<E, T> {
         if (this.value(p) != null) {
             //left
             if (this.left(p) != null && !this.left(p).equals(-1)) {
-                s.append(this.preOrderPrint(this.left(p)));
+                s.append(this.postOrderPrint(this.left(p)));
             }
             //right
             if (this.right(p) != null && !this.right(p).equals(-1)) {
-                s.append(this.preOrderPrint(this.right(p)));
+                s.append(this.postOrderPrint(this.right(p)));
             }
             //root
             s.append(this.value(p)).append(" ");
@@ -81,13 +81,13 @@ public interface BinaryTreeInterface<E, T> {
         if (this.value(p) != null) {
             //left
             if (this.left(p) != null && !this.left(p).equals(-1)) {
-                s.append(this.preOrderPrint(this.left(p)));
+                s.append(this.inOrderPrint(this.left(p)));
             }
             //root
             s.append(this.value(p)).append(" ");
             //right
             if (this.right(p) != null && !this.right(p).equals(-1)) {
-                s.append(this.preOrderPrint(this.right(p)));
+                s.append(this.inOrderPrint(this.right(p)));
             }
             return s.toString();
         }

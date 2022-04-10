@@ -1,8 +1,8 @@
 package hw5_20001976.bai1;
 
 public class LinkedBinaryTree<E> implements BinaryTreeInterface<E, LinkedBinaryTree.Node<E>> {
-    Node<E> node;
-    int size = 0;
+    protected Node<E> node;
+    protected int size = 0;
 
     public LinkedBinaryTree() {
         this.node = null;
@@ -175,7 +175,5 @@ public class LinkedBinaryTree<E> implements BinaryTreeInterface<E, LinkedBinaryT
             this.left = left;
             this.right = right;
         }
-
-
     }
 }
