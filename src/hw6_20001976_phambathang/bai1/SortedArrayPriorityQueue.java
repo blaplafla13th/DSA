@@ -41,7 +41,7 @@ public class SortedArrayPriorityQueue<K extends Comparable, E> implements Priori
             boolean found = false;
             for (int k = 0; k < n; k++) {
                 int i = (k + start) % array.length;
-                if (entry.getKey().compareTo(array[i].getKey()) < 0) {
+                if (entry.getKey().compareTo(array[i].getKey()) <= 0) {
                     ArrEntry temp = array[i];
                     array[i] = (ArrEntry) entry;
                     entry = temp;

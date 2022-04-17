@@ -1,6 +1,6 @@
 package hw6_20001976_phambathang.bai1;
 
-import java.util.ArrayList;
+
 import java.util.Iterator;
 
 @SuppressWarnings("unchecked,rawtypes")
@@ -8,12 +8,8 @@ public class UnsortedLinkedPriorityQueue<K extends Comparable, E> implements Pri
     int n = 0;
     private NodeEntry head;
     private NodeEntry tail;
-    private ArrayList<NodeEntry> store; //luu vo mot mang de insert node don gian hon
 
     public UnsortedLinkedPriorityQueue() {
-        head = null;
-        tail = null;
-        store = new ArrayList<>();
     }
 
     @Override
@@ -32,18 +28,12 @@ public class UnsortedLinkedPriorityQueue<K extends Comparable, E> implements Pri
             System.out.println("Null Element");
             return;
         }
-        store.add((NodeEntry) entry);
-        int parent = n % 2 == 0 ? (n - 1) / 2/*(parent of right child)*/ : n / 2/*(parent of left child)*/;
-        tail = store.get(n);
-        if (store.size() == 1) {
-            head = store.get(0);
+        if (n == 0) {
+            head = (NodeEntry) entry;
         } else {
-            tail.parent = store.get(parent);
-            if (n % 2 == 0)
-                tail.parent.right = tail;
-            else
-                tail.parent.left = tail;
+            tail.next = (NodeEntry) entry;
         }
+        tail = (NodeEntry) entry;
         n++;
     }
 
@@ -56,12 +46,19 @@ public class UnsortedLinkedPriorityQueue<K extends Comparable, E> implements Pri
     public Entry<K, E> removeMin() {
         Entry min = min();
         if (min == null) {
+            System.out.println("Empty");
             return null;
         }
-        if (min == tail) {
-            //TODO: remove tail
+        if (min == head) {
+            head = head.next;
         } else {
-            //TODO: tail to min
+            NodeEntry temp = head;
+            while (temp.next != null) {
+                if (temp.next == min) {
+                    temp.next = temp.next.next;
+                    break;
+                }
+            }
         }
         n--;
         return min;
@@ -71,8 +68,8 @@ public class UnsortedLinkedPriorityQueue<K extends Comparable, E> implements Pri
     public Entry<K, E> min() {
         if (isEmpty())
             return null;
-        Entry min = store.get(0);
-        for (Entry<K, E> entry : store) {
+        Entry min = head;
+        for (Entry<K, E> entry : this) {
             if (entry.getKey().compareTo(min.getKey()) < 0)
                 min = entry;
         }
@@ -85,9 +82,7 @@ public class UnsortedLinkedPriorityQueue<K extends Comparable, E> implements Pri
     }
 
     protected class NodeEntry extends Entry<K, E> {
-        private NodeEntry parent;
-        private NodeEntry left;
-        private NodeEntry right;
+        private NodeEntry next;
 
         public NodeEntry(K k, E e) {
             super(k, e);
@@ -95,6 +90,7 @@ public class UnsortedLinkedPriorityQueue<K extends Comparable, E> implements Pri
     }
 
     private class Iter implements Iterator<Entry<K, E>> {
+        NodeEntry pointer = head;
         int count = 0;
 
         @Override
@@ -104,7 +100,10 @@ public class UnsortedLinkedPriorityQueue<K extends Comparable, E> implements Pri
 
         @Override
         public Entry<K, E> next() {
-            return store.get(count);
+            NodeEntry temp = pointer;
+            count++;
+            pointer = pointer.next;
+            return temp;
         }
     }
 }
