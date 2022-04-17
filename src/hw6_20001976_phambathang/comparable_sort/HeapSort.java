@@ -14,13 +14,6 @@ public class HeapSort<T extends Comparable> extends Sort<T> {
                 printArray();
             }
         }
-        for (int i = array.length - 1; i > 0; i--) {
-            swap(0, i);
-            upHeap(0);
-            if (printDetail) {
-                printArray();
-            }
-        }
     }
 
     private void upHeap(int parent) {
@@ -48,13 +41,6 @@ public class HeapSort<T extends Comparable> extends Sort<T> {
     public void sortDesc(boolean printDetail) {
         for (int i = array.length / 2 - 1; i >= 0; i--) {
             downHeap(i);
-            if (printDetail) {
-                printArray();
-            }
-        }
-        for (int i = array.length - 1; i > 0; i--) {
-            swap(0, i);
-            downHeap(0);
             if (printDetail) {
                 printArray();
             }

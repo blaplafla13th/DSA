@@ -5,9 +5,9 @@ import hw6_20001976_phambathang.comparable_sort.Sort;
 
 public class test {
     public static void main(String[] args) {
-        Integer[] arr = {12, 11, 13, 5, 6, 7};
+        Integer[] arr = {13, 5, 8, 7};
         Sort<Integer> s = new HeapSort<>(arr);
-        s.calcTimeSortAsc(false);
+        s.calcTimeSortAsc(true);
         System.out.println(s);
         s.printArray();
     }
