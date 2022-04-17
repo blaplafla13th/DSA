@@ -1,0 +1,53 @@
+package hw6_20001976_phambathang;
+
+import hw6_20001976_phambathang.card.Card;
+import hw6_20001976_phambathang.card.CardUtil;
+import hw6_20001976_phambathang.comparable_sort.*;
+
+public class Bai3 {
+    public static void main(String[] args) {
+        Sort<Card> s;
+        Card[] sortedArrayAsc = CardUtil.getPokerSet();
+        Card[] unsortedArray = CardUtil.getPokerSet();
+        CardUtil.shuffle(unsortedArray);
+        System.out.println("Normal Case:");
+        s = new BubbleSort<>(unsortedArray.clone());
+        s.calcTimeSortAsc(false);
+        System.out.println(s);
+        s = new InsertionSort<>(unsortedArray.clone());
+        s.calcTimeSortAsc(false);
+        System.out.println(s);
+        s = new SelectionSort<>(unsortedArray.clone());
+        s.calcTimeSortAsc(false);
+        System.out.println(s);
+        s = new HeapSort<>(unsortedArray.clone());
+        s.calcTimeSortAsc(false);
+        System.out.println(s);
+        System.out.println("Best Case:");
+        s = new BubbleSort<>(sortedArrayAsc.clone());
+        s.calcTimeSortAsc(false);
+        System.out.println(s);
+        s = new InsertionSort<>(sortedArrayAsc.clone());
+        s.calcTimeSortAsc(false);
+        System.out.println(s);
+        s = new SelectionSort<>(sortedArrayAsc.clone());
+        s.calcTimeSortAsc(false);
+        System.out.println(s);
+        s = new HeapSort<>(sortedArrayAsc.clone());
+        s.calcTimeSortAsc(false);
+        System.out.println(s);
+        System.out.println("Worst Case:");
+        s = new BubbleSort<>(sortedArrayAsc.clone());
+        s.calcTimeSortDesc(false);
+        System.out.println(s);
+        s = new InsertionSort<>(sortedArrayAsc.clone());
+        s.calcTimeSortDesc(false);
+        System.out.println(s);
+        s = new SelectionSort<>(sortedArrayAsc.clone());
+        s.calcTimeSortDesc(false);
+        System.out.println(s);
+        s = new HeapSort<>(sortedArrayAsc.clone());
+        s.calcTimeSortDesc(false);
+        System.out.println(s);
+    }
+}

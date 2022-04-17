@@ -1,4 +1,4 @@
-package hw2_20001976.comparable_sort;
+package hw6_20001976_phambathang.comparable_sort;
 
 public class SelectionSort<T extends Comparable> extends Sort<T> {
 
@@ -42,5 +42,9 @@ public class SelectionSort<T extends Comparable> extends Sort<T> {
         }
     }
 
+    @Override
+    public String toString() {
+        return "SelectionSort: " + super.getDetail();
+    }
 }
 

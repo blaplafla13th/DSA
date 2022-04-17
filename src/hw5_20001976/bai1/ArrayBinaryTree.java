@@ -14,6 +14,10 @@ public class ArrayBinaryTree<E> implements BinaryTreeInterface<E, Integer> {
         array = (E[]) new Object[size];
     }
 
+    public void setArray(E[] array) {
+        this.array = array;
+        n = array.length;
+    }
 
     @Override
     public Integer addRoot(E element) {

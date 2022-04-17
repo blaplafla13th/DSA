@@ -6,15 +6,14 @@ import java.util.Iterator;
 public class UnsortedArrayPriorityQueue<K extends Comparable, E> implements PriorityQueueInterface<K, E> {
     ArrEntry[] array;
     int n = 0;
-    int defaultsize = 1000;
+    final int DEFAULT_SIZE = 1000;
 
     public UnsortedArrayPriorityQueue(int defaultsize) {
-        this.defaultsize = defaultsize;
         array = new UnsortedArrayPriorityQueue.ArrEntry[defaultsize];
     }
 
     public UnsortedArrayPriorityQueue() {
-        array = new UnsortedArrayPriorityQueue.ArrEntry[defaultsize];
+        array = new UnsortedArrayPriorityQueue.ArrEntry[DEFAULT_SIZE];
     }
 
     @Override
@@ -29,7 +28,7 @@ public class UnsortedArrayPriorityQueue<K extends Comparable, E> implements Prio
 
     @Override
     public void insert(Entry<K, E> entry) {
-        if (n < defaultsize)
+        if (n < array.length)
             array[n++] = (ArrEntry) entry;
         else
             System.out.println("Out of index");
@@ -64,9 +63,9 @@ public class UnsortedArrayPriorityQueue<K extends Comparable, E> implements Prio
         if (isEmpty())
             return null;
         else {
-            Entry<K, E> min = array[0];
+            ArrEntry min = array[0];
             for (int i = 1; i < n; i++) {
-                if (array[i] != null && min.getKey().compareTo(array[i].getKey()) > 0)
+                if (array[i] != null && min.compareTo(array[i]) > 0)
                     min = array[i];
             }
             return min;
@@ -80,6 +79,10 @@ public class UnsortedArrayPriorityQueue<K extends Comparable, E> implements Prio
     protected class ArrEntry extends Entry<K, E> {
         public ArrEntry(K k, E e) {
             super(k, e);
+        }
+
+        public int compareTo(ArrEntry o) {
+            return this.getKey().compareTo(o.getKey());
         }
     }
 

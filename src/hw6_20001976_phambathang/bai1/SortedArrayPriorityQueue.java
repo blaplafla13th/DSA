@@ -4,9 +4,9 @@ import java.util.Iterator;
 
 @SuppressWarnings("unchecked,rawtypes")
 public class SortedArrayPriorityQueue<K extends Comparable, E> implements PriorityQueueInterface<K, E> {
-    ArrEntry[] array;
-    int n = 0;
-    int defaultsize = 1000;
+    final int DEFAULT_SIZE = 1000;
+    protected ArrEntry[] array;
+    protected int n = 0;
     int start = 0;
 
     public SortedArrayPriorityQueue(int defaultSize) {
@@ -14,7 +14,7 @@ public class SortedArrayPriorityQueue<K extends Comparable, E> implements Priori
     }
 
     public SortedArrayPriorityQueue() {
-        array = new SortedArrayPriorityQueue.ArrEntry[defaultsize];
+        array = new SortedArrayPriorityQueue.ArrEntry[DEFAULT_SIZE];
     }
 
     @Override
@@ -39,9 +39,10 @@ public class SortedArrayPriorityQueue<K extends Comparable, E> implements Priori
             n++;
         } else {
             boolean found = false;
+            ArrEntry in = (ArrEntry) entry;
             for (int k = 0; k < n; k++) {
                 int i = (k + start) % array.length;
-                if (entry.getKey().compareTo(array[i].getKey()) <= 0) {
+                if (in.compareTo(array[i]) <= 0) {
                     ArrEntry temp = array[i];
                     array[i] = (ArrEntry) entry;
                     entry = temp;
@@ -89,6 +90,10 @@ public class SortedArrayPriorityQueue<K extends Comparable, E> implements Priori
     protected class ArrEntry extends Entry<K, E> {
         public ArrEntry(K k, E e) {
             super(k, e);
+        }
+
+        public int compareTo(ArrEntry o) {
+            return this.getKey().compareTo(o.getKey());
         }
     }
 

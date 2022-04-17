@@ -20,6 +20,4 @@ public abstract class Entry<K, E> {
     public String toString() {
         return (getKey() + " : " + getValue());
     }
-
-
 }

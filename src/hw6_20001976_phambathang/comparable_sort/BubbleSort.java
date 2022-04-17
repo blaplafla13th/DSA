@@ -1,4 +1,4 @@
-package hw2_20001976.comparable_sort;
+package hw6_20001976_phambathang.comparable_sort;
 
 public class BubbleSort<T extends Comparable> extends Sort<T> {
 
@@ -51,6 +51,11 @@ public class BubbleSort<T extends Comparable> extends Sort<T> {
             if (!swapped)
                 break;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "BubbleSort: " + super.getDetail();
     }
 }
 

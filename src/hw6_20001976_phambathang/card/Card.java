@@ -1,4 +1,4 @@
-package hw2_20001976.card;
+package hw6_20001976_phambathang.card;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
