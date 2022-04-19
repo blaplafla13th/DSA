@@ -1,7 +1,7 @@
 package hw6_20001976_phambathang.bai1;
 
 @SuppressWarnings("unchecked,rawtypes")
-public class TestDrive {
+public class TestDriver {
     public static void main(String[] args) {
         PriorityQueueInterface<Integer, String> test = new UnsortedArrayPriorityQueue<>(3);
         System.out.println("UnsortedArrayPriorityQueue Test");
