@@ -10,7 +10,7 @@ public class Bai3 {
         Card[] sortedArrayAsc = CardUtil.getPokerSet();
         Card[] unsortedArray = CardUtil.getPokerSet();
         CardUtil.shuffle(unsortedArray);
-        System.out.println("Normal Case:");
+        System.out.println("Random Case:");
         s = new BubbleSort<>(unsortedArray.clone());
         s.calcTimeSortAsc();
         System.out.println(s);
