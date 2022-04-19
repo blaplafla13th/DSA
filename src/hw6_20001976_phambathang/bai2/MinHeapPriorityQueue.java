@@ -74,18 +74,19 @@ public class MinHeapPriorityQueue<K extends Comparable, E> extends SortedArrayPr
         int i = 0;
         while (i < n) {
             if (right(i) < n) {
-                if (heapPQ[i].compareTo(heapPQ[left(i)]) <= 0
-                        && heapPQ[i].compareTo(heapPQ[right(i)]) <= 0)
-                    break;
-                else if (heapPQ[i].compareTo(heapPQ[left(i)]) > 0) {
-                    swap(i, left(i));
-                    i = left(i);
-                } else if (heapPQ[i].compareTo(heapPQ[right(i)]) > 0) {
-                    swap(i, right(i));
-                    i = right(i);
+                int min = i;
+                if (heapPQ[min].compareTo(heapPQ[left(i)]) >= 0) {
+                    min = left(i);
                 }
-            } else if (left(i) < n && (heapPQ[i].compareTo(heapPQ[left(i)]) >= 0))
+                if (heapPQ[min].compareTo(heapPQ[right(i)]) >= 0)
+                    min = right(i);
+                if (min != i) {
+                    swap(min, i);
+                    i = min;
+                }
+            } else if (left(i) < n && (heapPQ[i].compareTo(heapPQ[left(i)]) >= 0)) {
                 swap(i, left(i));
+            }
             break;
         }
     }

@@ -62,17 +62,16 @@ public class HeapSort<T extends Comparable<? super T>> extends Sort<T> {
             compareCounter++;
             if (right(i) < n) {
                 compareCounter++;
-                if (heapPQ[i].compareTo(heapPQ[left(i)]) <= 0
-                        && heapPQ[i].compareTo(heapPQ[right(i)]) <= 0)
-                    break;
-                else if (heapPQ[i].compareTo(heapPQ[left(i)]) > 0) {
-                    compareCounter++;
-                    swapPQ(i, left(i));
-                    i = left(i);
-                } else if (heapPQ[i].compareTo(heapPQ[right(i)]) > 0) {
-                    compareCounter += 2;
-                    swapPQ(i, right(i));
-                    i = right(i);
+                int min = i;
+                if (heapPQ[min].compareTo(heapPQ[left(i)]) >= 0) {
+                    min = left(i);
+                }
+                compareCounter++;
+                if (heapPQ[min].compareTo(heapPQ[right(i)]) >= 0)
+                    min = right(i);
+                if (min != i) {
+                    swapPQ(min, i);
+                    i = min;
                 }
             } else if (left(i) < n && (heapPQ[i].compareTo(heapPQ[left(i)]) >= 0)) {
                 swapPQ(i, left(i));
@@ -112,17 +111,16 @@ public class HeapSort<T extends Comparable<? super T>> extends Sort<T> {
             compareCounter++;
             if (right(i) < n) {
                 compareCounter++;
-                if (heapPQ[i].compareTo(heapPQ[left(i)]) >= 0
-                        && heapPQ[i].compareTo(heapPQ[right(i)]) >= 0)
-                    break;
-                else if (heapPQ[i].compareTo(heapPQ[left(i)]) < 0) {
-                    compareCounter++;
-                    swapPQ(i, left(i));
-                    i = left(i);
-                } else if (heapPQ[i].compareTo(heapPQ[right(i)]) < 0) {
-                    compareCounter += 2;
-                    swapPQ(i, right(i));
-                    i = right(i);
+                int min = i;
+                if (heapPQ[min].compareTo(heapPQ[left(i)]) <= 0) {
+                    min = left(i);
+                }
+                compareCounter++;
+                if (heapPQ[min].compareTo(heapPQ[right(i)]) <= 0)
+                    min = right(i);
+                if (min != i) {
+                    swapPQ(min, i);
+                    i = min;
                 }
             } else if (left(i) < n && (heapPQ[i].compareTo(heapPQ[left(i)]) <= 0)) {
                 swapPQ(i, left(i));

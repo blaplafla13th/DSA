@@ -30,5 +30,6 @@ public class Test {
         for (Entry entry : test) {
             System.out.println(entry);
         }
+        while (!test.isEmpty()) System.out.println("remove next min: " + test.removeMin());
     }
 }
