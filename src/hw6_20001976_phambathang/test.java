@@ -8,7 +8,7 @@ public class test {
     public static void main(String[] args) {
         Integer[] arr = {13, 5, 8, 7, 2};
         Sort<Integer> s = new HeapSort<>(arr);
-        s.calcTimeSortDesc(true);
+        s.calcTimeSortDesc();
         System.out.println(s);
         s.printArray();
     }

@@ -6,7 +6,7 @@ public class SelectionSort<T extends Comparable<? super T>> extends Sort<T> {
         this.array = array;
     }
 
-    public void sortAsc(boolean printDetail) {
+    public void sortAsc() {
         if (array == null) throw new IllegalArgumentException();
         swapCounter = 0;
         compareCounter = 0;
@@ -18,13 +18,10 @@ public class SelectionSort<T extends Comparable<? super T>> extends Sort<T> {
                     min_index = j;
             }
             swap(i, min_index);
-            if (printDetail) {
-                printArray();
-            }
         }
     }
 
-    public void sortDesc(boolean printDetail) {
+    public void sortDesc() {
         if (array == null) throw new IllegalArgumentException();
         swapCounter = 0;
         compareCounter = 0;
@@ -36,9 +33,6 @@ public class SelectionSort<T extends Comparable<? super T>> extends Sort<T> {
                     max_index = j;
             }
             swap(i, max_index);
-            if (printDetail) {
-                printArray();
-            }
         }
     }
 

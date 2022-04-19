@@ -34,7 +34,7 @@ public class HeapSort<T extends Comparable<? super T>> extends Sort<T> {
     }
 
     @Override
-    public void sortAsc(boolean printDetail) {
+    public void sortAsc() {
         swapCounter = 0;
         compareCounter = 0;
         for (T data : array) {
@@ -84,7 +84,7 @@ public class HeapSort<T extends Comparable<? super T>> extends Sort<T> {
     }
 
     @Override
-    public void sortDesc(boolean printDetail) {
+    public void sortDesc() {
         swapCounter = 0;
         compareCounter = 0;
         for (T data : array) {

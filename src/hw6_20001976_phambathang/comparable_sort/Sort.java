@@ -34,23 +34,23 @@ public abstract class Sort<T extends Comparable> {
         swapCounter++;
     }
 
-    public long calcTimeSortAsc(boolean printDetail) {
+    public long calcTimeSortAsc() {
         this.time = System.nanoTime();
-        sortAsc(printDetail);
+        sortAsc();
         this.time = (System.nanoTime() - time);
         return time;
     }
 
-    public long calcTimeSortDesc(boolean printDetail) {
+    public long calcTimeSortDesc() {
         this.time = System.nanoTime();
-        sortDesc(printDetail);
+        sortDesc();
         this.time = (System.nanoTime() - time);
         return time;
     }
 
-    public abstract void sortAsc(boolean printDetail);
+    public abstract void sortAsc();
 
-    public abstract void sortDesc(boolean printDetail);
+    public abstract void sortDesc();
 
     public String getDetail() {
         if (compareCounter == 0)

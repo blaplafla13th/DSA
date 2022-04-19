@@ -6,7 +6,7 @@ public class InsertionSort<T extends Comparable<? super T>> extends Sort<T> {
         this.array = array;
     }
 
-    public void sortAsc(boolean printDetail) {
+    public void sortAsc() {
         if (array == null) throw new IllegalArgumentException();
         swapCounter = 0;
         compareCounter = 0;
@@ -17,13 +17,10 @@ public class InsertionSort<T extends Comparable<? super T>> extends Sort<T> {
                     swap(j, j - 1);
                 } else break;
             }
-            if (printDetail) {
-                printArray();
-            }
         }
     }
 
-    public void sortDesc(boolean printDetail) {
+    public void sortDesc() {
         if (array == null) throw new IllegalArgumentException();
         swapCounter = 0;
         compareCounter = 0;
@@ -33,9 +30,6 @@ public class InsertionSort<T extends Comparable<? super T>> extends Sort<T> {
                 if (array[j].compareTo(array[j - 1]) > 0) {
                     swap(j, j - 1);
                 } else break;
-            }
-            if (printDetail) {
-                printArray();
             }
         }
     }
