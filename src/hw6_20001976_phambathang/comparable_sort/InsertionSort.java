@@ -1,6 +1,6 @@
 package hw6_20001976_phambathang.comparable_sort;
 
-public class InsertionSort<T extends Comparable> extends Sort<T> {
+public class InsertionSort<T extends Comparable<? super T>> extends Sort<T> {
 
     public InsertionSort(T[] array) {
         this.array = array;

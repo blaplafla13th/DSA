@@ -1,6 +1,6 @@
 package hw2_20001976.comparable_sort;
 
-public abstract class Sort<T extends Comparable> {
+public abstract class Sort<T extends Comparable<? super T>> {
     protected int swapCounter = 0;
     protected int compareCounter = 0;
     protected T[] array;

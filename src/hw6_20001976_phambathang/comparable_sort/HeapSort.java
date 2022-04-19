@@ -1,71 +1,136 @@
 package hw6_20001976_phambathang.comparable_sort;
 
-public class HeapSort<T extends Comparable> extends Sort<T> {
+@SuppressWarnings("unchecked")
+public class HeapSort<T extends Comparable<? super T>> extends Sort<T> {
+
+    private T[] heapPQ;
+    private int n = 0;
 
     public HeapSort(T[] array) {
         this.array = array;
+        heapPQ = (T[]) new Comparable[array.length];
+    }
+
+    private int parent(int i) {
+        return i % 2 == 0 ? (i - 1) / 2/*(parent of right child)*/ : i / 2/*(parent of left child)*/;
+    }
+
+    private int right(int i) {
+        return 2 * i + 2;
+    }
+
+    private int left(int i) {
+        return 2 * i + 1;
+    }
+
+    private void swapPQ(int i, int j) {
+        if (i == j || i > n || j > n || i < 0 || j < 0) ;
+        else {
+            swapCounter++;
+            T temp = heapPQ[i];
+            heapPQ[i] = heapPQ[j];
+            heapPQ[j] = temp;
+        }
     }
 
     @Override
     public void sortAsc(boolean printDetail) {
-        for (int i = array.length / 2 - 1; i >= 0; i--) {
-            upHeap(i);
-            if (printDetail) {
-                printArray();
+        swapCounter = 0;
+        compareCounter = 0;
+        for (T data : array) {
+            heapPQ[n++] = data;
+            int index = n - 1;
+            compareCounter++;
+            while (heapPQ[index].compareTo(heapPQ[parent(index)]) <= 0) {
+                compareCounter++;
+                swapPQ(index, parent(index));
+                index = parent(index);
+                if (index == 0)
+                    break;
             }
+        }
+        for (int i = 0; i < array.length; i++) {
+            array[i] = removeMin();
         }
     }
 
-    private void upHeap(int parent) {
-        if (parent > array.length || parent < 0) {
-            return;
+    public T removeMin() {
+        swapPQ(0, n - 1);
+        n--;
+        int i = 0;
+        while (i < n) {
+            compareCounter++;
+            if (right(i) < n) {
+                compareCounter++;
+                if (heapPQ[i].compareTo(heapPQ[left(i)]) <= 0
+                        && heapPQ[i].compareTo(heapPQ[right(i)]) <= 0)
+                    break;
+                else if (heapPQ[i].compareTo(heapPQ[left(i)]) > 0) {
+                    compareCounter++;
+                    swapPQ(i, left(i));
+                    i = left(i);
+                } else if (heapPQ[i].compareTo(heapPQ[right(i)]) > 0) {
+                    compareCounter += 2;
+                    swapPQ(i, right(i));
+                    i = right(i);
+                }
+            } else if (left(i) < n && (heapPQ[i].compareTo(heapPQ[left(i)]) >= 0)) {
+                swapPQ(i, left(i));
+                compareCounter++;
+            }
+            break;
         }
-        int largest = parent;
-        int left = 2 * parent + 1;
-        int right = 2 * parent + 2;
-        // find largest
-        compareCounter += 1;
-        if (left < array.length/*if have left child*/ && array[left].compareTo(array[largest]) > 0)
-            largest = left;
-        compareCounter += 1;
-        if (right < array.length/*if have right child*/ && array[right].compareTo(array[largest]) > 0)
-            largest = right;
-        compareCounter += 1;
-        if (largest != parent) {
-            swap(parent, largest);
-            upHeap(largest);//goi xuong cay con
-        }
+        return heapPQ[n];
     }
 
     @Override
     public void sortDesc(boolean printDetail) {
-        for (int i = array.length / 2 - 1; i >= 0; i--) {
-            downHeap(i);
-            if (printDetail) {
-                printArray();
+        swapCounter = 0;
+        compareCounter = 0;
+        for (T data : array) {
+            heapPQ[n++] = data;
+            int index = n - 1;
+            compareCounter++;
+            while (heapPQ[index].compareTo(heapPQ[parent(index)]) >= 0) {
+                compareCounter++;
+                swapPQ(index, parent(index));
+                index = parent(index);
+                if (index == 0)
+                    break;
             }
+        }
+        for (int i = 0; i < array.length; i++) {
+            array[i] = removeMax();
         }
     }
 
-    private void downHeap(int parent) {
-        if (parent > array.length || parent < 0) {
-            return;
+    public T removeMax() {
+        swapPQ(0, n - 1);
+        n--;
+        int i = 0;
+        while (i < n) {
+            compareCounter++;
+            if (right(i) < n) {
+                compareCounter++;
+                if (heapPQ[i].compareTo(heapPQ[left(i)]) >= 0
+                        && heapPQ[i].compareTo(heapPQ[right(i)]) >= 0)
+                    break;
+                else if (heapPQ[i].compareTo(heapPQ[left(i)]) < 0) {
+                    compareCounter++;
+                    swapPQ(i, left(i));
+                    i = left(i);
+                } else if (heapPQ[i].compareTo(heapPQ[right(i)]) < 0) {
+                    compareCounter += 2;
+                    swapPQ(i, right(i));
+                    i = right(i);
+                }
+            } else if (left(i) < n && (heapPQ[i].compareTo(heapPQ[left(i)]) <= 0)) {
+                swapPQ(i, left(i));
+                compareCounter++;
+            }
+            break;
         }
-        int smallest = parent;
-        int left = 2 * parent + 1;
-        int right = 2 * parent + 2;
-        // find smallest
-        compareCounter += 1;
-        if (left < array.length/*if have left child*/ && array[left].compareTo(array[smallest]) < 0)
-            smallest = left;
-        compareCounter += 1;
-        if (right < array.length/*if have right child*/ && array[right].compareTo(array[smallest]) < 0)
-            smallest = right;
-        compareCounter += 1;
-        if (smallest != parent) {
-            swap(parent, smallest);
-            downHeap(smallest);//goi xuong cay con
-        }
+        return heapPQ[n];
     }
 
     @Override

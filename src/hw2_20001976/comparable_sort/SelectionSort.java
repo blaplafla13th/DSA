@@ -1,6 +1,6 @@
 package hw2_20001976.comparable_sort;
 
-public class SelectionSort<T extends Comparable> extends Sort<T> {
+public class SelectionSort<T extends Comparable<? super T>> extends Sort<T> {
 
     public SelectionSort(T[] array) {
         this.array = array;
