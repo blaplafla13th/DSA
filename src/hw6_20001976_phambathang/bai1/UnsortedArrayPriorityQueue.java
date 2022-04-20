@@ -42,17 +42,14 @@ public class UnsortedArrayPriorityQueue<K extends Comparable, E> implements Prio
     @Override
     public Entry removeMin() {
         Entry<K, E> min = min();
-        boolean found = false;
+        n--;
         if (min != null) {
-            for (int i = 0; i < n; i++) {
-                if (found && i + 1 < array.length)
-                    array[i] = array[i + 1];
-                else if (array[i] == min) {
-                    if (i + 1 < array.length)
-                        array[i] = array[i + 1];
-                    n--;
-                    found = true;
-                }
+            int i = 0;
+            while (i < n) {
+                if (array[i] == min) {
+                    array[i] = array[n];
+                    break;
+                } else i++;
             }
         }
         return min;

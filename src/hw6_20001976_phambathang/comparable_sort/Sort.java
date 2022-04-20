@@ -1,6 +1,6 @@
 package hw6_20001976_phambathang.comparable_sort;
 
-public abstract class Sort<T extends Comparable> {
+public abstract class Sort<T extends Comparable<? super T>> {
     protected int swapCounter = 0;
     protected int compareCounter = 0;
     protected T[] array;
@@ -59,7 +59,7 @@ public abstract class Sort<T extends Comparable> {
             return String.format("So lan so sanh: %d, so lan doi cho: %d "
                     , compareCounter, swapCounter);
         else
-            return String.format("So lan so sanh: %d, so lan doi cho: %d , mat: %.3f ms"
+            return String.format("So lan so sanh: %d, so lan doi cho: %d, mat: %.3f ms"
                     , compareCounter, swapCounter, time / 1000000.0);
     }
 }
