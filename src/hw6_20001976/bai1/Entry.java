@@ -1,4 +1,4 @@
-package hw6_20001976_phambathang.bai1;
+package hw6_20001976.bai1;
 
 public abstract class Entry<K, E> {
     protected K key;

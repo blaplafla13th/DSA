@@ -1,4 +1,4 @@
-package hw6_20001976_phambathang.comparable_sort;
+package hw6_20001976.comparable_sort;
 public class BubbleSort<T extends Comparable<? super T>> extends Sort<T> {
 
     public BubbleSort(T[] array) {

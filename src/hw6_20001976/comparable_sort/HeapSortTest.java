@@ -1,4 +1,4 @@
-package hw6_20001976_phambathang.comparable_sort;
+package hw6_20001976.comparable_sort;
 
 public class HeapSortTest {
     public static void main(String[] args) {

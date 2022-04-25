@@ -1,4 +1,4 @@
-package hw6_20001976_phambathang.comparable_sort;
+package hw6_20001976.comparable_sort;
 
 @SuppressWarnings("unchecked")
 public class HeapSort<T extends Comparable<? super T>> extends Sort<T> {

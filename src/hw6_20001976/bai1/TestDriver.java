@@ -1,4 +1,4 @@
-package hw6_20001976_phambathang.bai1;
+package hw6_20001976.bai1;
 
 @SuppressWarnings("unchecked,rawtypes")
 public class TestDriver {

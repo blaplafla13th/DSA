@@ -1,8 +1,8 @@
-package hw6_20001976_phambathang;
+package hw6_20001976;
 
-import hw6_20001976_phambathang.card.Card;
-import hw6_20001976_phambathang.card.CardUtil;
-import hw6_20001976_phambathang.comparable_sort.*;
+import hw6_20001976.card.Card;
+import hw6_20001976.card.CardUtil;
+import hw6_20001976.comparable_sort.*;
 
 public class Bai3 {
     public static void main(String[] args) {

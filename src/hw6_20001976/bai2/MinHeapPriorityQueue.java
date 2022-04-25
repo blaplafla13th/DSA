@@ -1,7 +1,7 @@
-package hw6_20001976_phambathang.bai2;
+package hw6_20001976.bai2;
 
-import hw6_20001976_phambathang.bai1.Entry;
-import hw6_20001976_phambathang.bai1.SortedArrayPriorityQueue;
+import hw6_20001976.bai1.Entry;
+import hw6_20001976.bai1.SortedArrayPriorityQueue;
 
 import java.util.Iterator;
 
