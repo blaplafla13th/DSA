@@ -36,7 +36,7 @@ public class BinarySearch<T extends Comparable<? super T>> extends Search<T> {
     }
 
     private int binarySearchIndex(T data, int startIndex, int endIndex) {
-        if (search.get(startIndex).equals(data) || search.get(endIndex).equals(data))
+        if (search.get(startIndex).equals(data))
             return startIndex;
         else if (search.get(endIndex).equals(data))
             return endIndex;

@@ -12,10 +12,13 @@ public abstract class Search<T> {
 
     abstract int getIndex(T data);
 
-    public long getRunningTime(T data) {
+    public void getRunningTime(T data) {
         this.time = System.nanoTime();
-        isContain(data);
+        int index = getIndex(data);
         this.time = System.nanoTime() - this.time;
-        return this.time;
+        if (index == -1)
+            System.out.printf("khong tim thay phan tu, mat %.3f ms \n", time / 1000000.0);
+        else
+            System.out.printf("tim thay phan tu tai vi tri %d, mat %.3f ms \n", index, time / 1000000.0);
     }
 }
