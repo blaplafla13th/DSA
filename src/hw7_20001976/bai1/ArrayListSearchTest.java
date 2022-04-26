@@ -1,4 +1,4 @@
-package hw7_20001976.arraylist_search;
+package hw7_20001976.bai1;
 
 public class ArrayListSearchTest {
     public static void main(String[] args) {

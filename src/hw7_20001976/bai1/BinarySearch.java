@@ -1,4 +1,4 @@
-package hw7_20001976.arraylist_search;
+package hw7_20001976.bai1;
 
 public class BinarySearch<T extends Comparable<? super T>> extends Search<T> {
     public BinarySearch(SimpleArrayList<T> search) {
@@ -31,7 +31,7 @@ public class BinarySearch<T extends Comparable<? super T>> extends Search<T> {
     }
 
     @Override
-    int getIndex(T data) {
+    int search(T data) {
         return binarySearchIndex(data, 0, search.size() - 1);
     }
 

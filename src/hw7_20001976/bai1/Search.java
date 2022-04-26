@@ -1,4 +1,4 @@
-package hw7_20001976.arraylist_search;
+package hw7_20001976.bai1;
 
 public abstract class Search<T> {
     protected SimpleArrayList<T> search;
@@ -10,11 +10,11 @@ public abstract class Search<T> {
 
     abstract boolean isContain(T data);
 
-    abstract int getIndex(T data);
+    abstract int search(T data);
 
     public void getRunningTime(T data) {
         this.time = System.nanoTime();
-        int index = getIndex(data);
+        int index = search(data);
         this.time = System.nanoTime() - this.time;
         if (index == -1)
             System.out.printf("khong tim thay phan tu, mat %.3f ms \n", time / 1000000.0);

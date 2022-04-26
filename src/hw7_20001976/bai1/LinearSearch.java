@@ -1,4 +1,4 @@
-package hw7_20001976.arraylist_search;
+package hw7_20001976.bai1;
 
 public class LinearSearch<T> extends Search<T> {
     public LinearSearch(SimpleArrayList<T> search) {
@@ -16,7 +16,7 @@ public class LinearSearch<T> extends Search<T> {
     }
 
     @Override
-    int getIndex(T data) {
+    int search(T data) {
         if (!search.isEmpty())
             for (int i = 0; i < search.size(); i++) {
                 if (data.equals(search.get(i)))

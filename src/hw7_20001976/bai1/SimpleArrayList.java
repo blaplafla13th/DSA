@@ -1,4 +1,4 @@
-package hw7_20001976.arraylist_search;
+package hw7_20001976.bai1;
 
 import java.util.Arrays;
 import java.util.Iterator;
