@@ -1,4 +1,4 @@
-package hw7_20001976.bai1;
+package hw7_20001976.list;
 
 public class SearchTest {
     public static void main(String[] args) {

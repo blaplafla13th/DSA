@@ -1,4 +1,4 @@
-package hw7_20001976.bai1;
+package hw7_20001976.list;
 
 public class BinarySearch<T extends Comparable<? super T>> extends Search<T> {
     public BinarySearch(SimpleArrayList<T> search) {

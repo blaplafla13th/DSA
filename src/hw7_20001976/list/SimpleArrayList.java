@@ -1,4 +1,4 @@
-package hw7_20001976.bai1;
+package hw7_20001976.list;
 
 import java.util.Arrays;
 import java.util.Iterator;
