@@ -8,6 +8,10 @@ public class TestBinarySearchTree {
         for (int i = 0; i < input.length; i++) {
             input[i] = noDup(input, new Random(), i, 60);
         }
+        for (int i : input) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
         BinarySearchTree<Integer> tree = new BinarySearchTree<>();
         System.out.println("---------------------------------------\nTest BinarySearchTree");
         testTree(tree, input);
@@ -21,13 +25,18 @@ public class TestBinarySearchTree {
             tree.insert(i);
         }
         tree.printTree();
-        System.out.println("Search index 13 in input: " + tree.search(input[13]));
-        System.out.println("Delete index 5 in input ");
-        tree.search(input[5]);
-        System.out.println("Delete index 11 in input ");
-        tree.search(input[11]);
-        System.out.println("Delete index 7 in input ");
-        tree.search(input[7]);
+        System.out.println("Search index 13 in input: " + tree.search(input[13]).data);
+        System.out.println("Min: " + tree.findMin().getData());
+        System.out.println("Delete index 5 in input: " + input[5]);
+        tree.delete(input[5]);
+        System.out.println("Delete index 11 in input " + input[11]);
+        tree.delete(input[11]);
+        System.out.println("Delete index 7 in input " + input[7]);
+        tree.delete(input[7]);
+        tree.printTree();
+        System.out.println("Delete not in tree element");
+        tree.delete(-1);
+        System.out.println("Search index 20 in input: " + tree.search(input[20]).data);
         tree.printTree();
     }
 
