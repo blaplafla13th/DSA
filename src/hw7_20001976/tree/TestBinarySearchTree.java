@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class TestBinarySearchTree {
     public static void main(String[] args) {
-        int[] input = new int[50];
+        int[] input = new int[30];
         for (int i = 0; i < input.length; i++) {
             input[i] = noDup(input, new Random(), i, 60);
         }
@@ -15,9 +15,11 @@ public class TestBinarySearchTree {
         BinarySearchTree<Integer> tree = new BinarySearchTree<>();
         System.out.println("---------------------------------------\nTest BinarySearchTree");
         testTree(tree, input);
+        TreeViewer binarySearchTreeViewer = new TreeViewer(tree, "BinarySearchTree");
         System.out.println("---------------------------------------\nTest AVL Tree");
         tree = new AVL<>();
         testTree(tree, input);
+        TreeViewer avlTreeViewer = new TreeViewer(tree, "AVL Tree");
     }
 
     private static void testTree(BinarySearchTree<Integer> tree, int[] input) {

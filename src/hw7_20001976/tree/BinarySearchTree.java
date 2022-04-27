@@ -120,6 +120,38 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         }
     }
 
+    public Node<T> left(Node<T> p) {
+        if (p == null) {
+            return null;
+        }
+        return p.left;
+    }
+
+    public Node<T> right(Node<T> p) {
+        if (p == null) {
+            return null;
+        }
+        return p.right;
+    }
+
+    public Node<T> parent(Node<T> p) {
+        if (p == null) {
+            return null;
+        }
+        return p.parent;
+    }
+
+    public T value(Node<T> p) {
+        if (p == null) {
+            return null;
+        }
+        return p.data;
+    }
+
+    public Node<T> root() {
+        return root;
+    }
+
     protected static class Node<E> {
         protected E data; // an data stored at this root
         protected Node<E> parent; // the parent of this node
