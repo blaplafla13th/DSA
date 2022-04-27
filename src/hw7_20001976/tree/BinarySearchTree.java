@@ -23,7 +23,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     public Node<T> search(Node<T> root, T data) {
         if (data == null || root == null)
             return null;
-        else if (root.getData().equals(data))
+        else if (root.getData().equals(data) || data.compareTo(root.getData()) == 0)
             return root;
         else if (data.compareTo(root.getData()) > 0)
             return search(root.getRight(), data);

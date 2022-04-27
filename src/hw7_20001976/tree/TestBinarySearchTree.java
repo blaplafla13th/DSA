@@ -25,18 +25,20 @@ public class TestBinarySearchTree {
             tree.insert(i);
         }
         tree.printTree();
-        System.out.println("Search index 13 in input: " + tree.search(input[13]).data);
+        BinarySearchTree.Node<Integer> search = tree.search(input[13]);
+        System.out.println("Search index 13 in input: " + (search == null ? "Not Found" : search.data));
         System.out.println("Min: " + tree.findMin().getData());
         System.out.println("Delete index 5 in input: " + input[5]);
         tree.delete(input[5]);
-        System.out.println("Delete index 11 in input " + input[11]);
+        System.out.println("Delete index 11 in input: " + input[11]);
         tree.delete(input[11]);
-        System.out.println("Delete index 7 in input " + input[7]);
+        System.out.println("Delete index 7 in input: " + input[7]);
         tree.delete(input[7]);
         tree.printTree();
         System.out.println("Delete not in tree element");
         tree.delete(-1);
-        System.out.println("Search index 20 in input: " + tree.search(input[20]).data);
+        search = tree.search(input[20]);
+        System.out.println("Search index 20 in input after delete: " + (search == null ? "Not Found" : search.data));
         tree.printTree();
     }
 
