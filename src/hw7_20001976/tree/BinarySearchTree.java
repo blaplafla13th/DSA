@@ -78,18 +78,20 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
             root.right = delete(root.right, data);
             if (root.right != null)
                 root.right.parent = root;
-        } else if (data.compareTo(root.getData()) == 0 && root.left == null)
-            return root.right;
-        else if (data.compareTo(root.getData()) == 0 && root.right == null)
-            return root.left;
+        } else if (data.compareTo(root.getData()) == 0 && root.left == null && root.right != null){
+            return root.right;}
+        else if (data.compareTo(root.getData()) == 0 && root.right == null && root.left != null){
+            return root.left;}
         else if (data.compareTo(root.getData()) == 0) {
             Node<T> successor = findMin(root.right);
             root.data = successor.data;
             root.right = delete(root.right, data);
-            if (successor.parent.left == successor)
-                successor.parent.left = null;
+            if (successor.parent == root)
+            	root = successor.right;
+            else if (successor.parent.left == successor)
+                successor.parent.left = successor.right;
             else if (successor.parent.right == successor)
-                successor.parent.right = null;
+                successor.parent.right = successor.right;
         }
         return root;
     }
