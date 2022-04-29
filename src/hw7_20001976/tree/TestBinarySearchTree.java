@@ -16,8 +16,8 @@ public class TestBinarySearchTree {
         System.out.println();
         System.out.println("---------------------------------------\nTest BinarySearchTree");
         BinarySearchTree<Integer> tree = new BinarySearchTree<>();
-//        testTree(tree, input);
-//        TreeViewer binarySearchTreeViewer = new TreeViewer(tree, "BinarySearchTree");
+        testTree(tree, input);
+        TreeViewer binarySearchTreeViewer = new TreeViewer(tree, "BinarySearchTree");
         System.out.println("---------------------------------------\nTest AVL Tree");
         tree = new AVL<>();
         testTree(tree, input);
@@ -27,6 +27,7 @@ public class TestBinarySearchTree {
     private static void testTree(BinarySearchTree<Integer> tree, int[] input) {
         for (int i : input) {
             tree.insert(i);
+            System.out.println(tree.height(tree.root));
         }
         tree.printTree();
         BinarySearchTree.Node<Integer> search = tree.search(input[13]);
