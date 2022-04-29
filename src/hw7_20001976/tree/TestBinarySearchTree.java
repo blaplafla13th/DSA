@@ -4,18 +4,20 @@ import java.util.Random;
 
 public class TestBinarySearchTree {
     public static void main(String[] args) {
-        int[] input = new int[30];
+        // Tree Data Structure https://www.happycoders.eu/algorithms/
+        System.out.print("---------------------------------------\nCreating test:");
+        int[] input = new int[21];
         for (int i = 0; i < input.length; i++) {
-            input[i] = noDup(input, new Random(), i, 60);
+            input[i] = noDup(input, new Random(), i, 200); // max must be bigger than array or infinity loop
         }
         for (int i : input) {
             System.out.print(i + " ");
         }
         System.out.println();
-        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
         System.out.println("---------------------------------------\nTest BinarySearchTree");
-        testTree(tree, input);
-        TreeViewer binarySearchTreeViewer = new TreeViewer(tree, "BinarySearchTree");
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+//        testTree(tree, input);
+//        TreeViewer binarySearchTreeViewer = new TreeViewer(tree, "BinarySearchTree");
         System.out.println("---------------------------------------\nTest AVL Tree");
         tree = new AVL<>();
         testTree(tree, input);
@@ -41,6 +43,8 @@ public class TestBinarySearchTree {
         tree.delete(-1);
         search = tree.search(input[20]);
         System.out.println("Search index 20 in input after delete: " + (search == null ? "Not Found" : search.data));
+        System.out.println("Remove min:");
+        tree.delete(tree.findMin().getData());
         tree.printTree();
     }
 
