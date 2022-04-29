@@ -6,7 +6,7 @@ public class TestBinarySearchTree {
     public static void main(String[] args) {
         // Tree Data Structure https://www.happycoders.eu/algorithms/
         System.out.print("---------------------------------------\nCreating test:");
-        int[] input = new int[21];
+        int[] input = new int[50];
         for (int i = 0; i < input.length; i++) {
             input[i] = noDup(input, new Random(), i, 200); // max must be bigger than array or infinity loop
         }
@@ -15,21 +15,19 @@ public class TestBinarySearchTree {
         }
         System.out.println();
         System.out.println("---------------------------------------\nTest BinarySearchTree");
-        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
-        testTree(tree, input);
-        TreeViewer binarySearchTreeViewer = new TreeViewer(tree, "BinarySearchTree");
+        BinarySearchTree<Integer> bts = new BinarySearchTree<>();
+        testTree(bts, input);
+        TreeViewer binarySearchTreeViewer = new TreeViewer(bts, "BinarySearchTree");
         System.out.println("---------------------------------------\nTest AVL Tree");
-        tree = new AVL<>();
-        testTree(tree, input);
-        TreeViewer avlTreeViewer = new TreeViewer(tree, "AVL Tree");
+        AVL<Integer> avl = new AVL<>();
+        testTree(avl, input);
+        TreeViewer avlTreeViewer = new TreeViewer(avl, "AVL Tree");
     }
 
     private static void testTree(BinarySearchTree<Integer> tree, int[] input) {
         for (int i : input) {
             tree.insert(i);
-            System.out.println(tree.height(tree.root));
         }
-        tree.printTree();
         BinarySearchTree.Node<Integer> search = tree.search(input[13]);
         System.out.println("Search index 13 in input: " + (search == null ? "Not Found" : search.data));
         System.out.println("Min: " + tree.findMin().getData());
