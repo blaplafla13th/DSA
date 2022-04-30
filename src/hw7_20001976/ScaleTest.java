@@ -10,7 +10,7 @@ public class ScaleTest {
     public static void main(String[] args) {
         SimpleArrayList<Integer> testArray = new SimpleArrayList<>();
         System.out.println("Insert 1 million numbers");
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1000000; i++) {
             testArray.add(i);
         }
         test(testArray);
@@ -73,7 +73,6 @@ public class ScaleTest {
         System.out.println("Inserting");
         long time = System.nanoTime();
         for (int i : testArray) {
-            System.out.println(i);
             bst.insert(i);
         }
         time = System.nanoTime() - time;
@@ -89,7 +88,6 @@ public class ScaleTest {
         System.out.println("Inserting");
         long time = System.nanoTime();
         for (int i : testArray) {
-            System.out.println(i);
             avl.insert(i);
         }
         time = System.nanoTime() - time;
