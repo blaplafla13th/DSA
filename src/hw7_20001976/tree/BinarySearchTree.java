@@ -154,6 +154,16 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         return root;
     }
 
+    public void getRunningTime(T data) {
+        long time = System.nanoTime();
+        Node<T> index = search(data);
+        time = System.nanoTime() - time;
+        if (index == null)
+            System.out.printf("khong tim thay phan tu, mat %.3f ms \n", time / 1000000.0);
+        else
+            System.out.printf("tim thay phan tu tai vi tri %s, mat %.3f ms \n", index.toString(), time / 1000000.0);
+    }
+
     protected static class Node<E> {
         protected E data; // an data stored at this root
         protected Node<E> parent; // the parent of this node
