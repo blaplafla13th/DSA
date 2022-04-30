@@ -8,18 +8,18 @@ import hw7_20001976.tree.BinarySearchTree;
 
 public class ScaleTest {
     public static void main(String[] args) {
-        SimpleArrayList<Integer> testArray = new SimpleArrayList<Integer>();
+        SimpleArrayList<Integer> testArray = new SimpleArrayList<>();
         System.out.println("Insert 1 million numbers");
-        for (int i = 0; i < 1000000; i++) {
+        for (int i = 0; i < 100; i++) {
             testArray.add(i);
         }
-        System.out.println("Insert 10 million numbers");
         test(testArray);
+        System.out.println("Insert 10 million numbers");
         for (int i = 1000000; i < 10000000; i++) {
             testArray.add(i);
         }
-        System.out.println("Insert 100 million numbers");
         test(testArray);
+        System.out.println("Insert 100 million numbers");
         for (int i = 10000000; i < 100000000; i++) {
             testArray.add(i);
         }

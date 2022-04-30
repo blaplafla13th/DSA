@@ -161,7 +161,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         if (index == null)
             System.out.printf("khong tim thay phan tu, mat %.3f ms \n", time / 1000000.0);
         else
-            System.out.printf("tim thay phan tu tai vi tri %s, mat %.3f ms \n", index.toString(), time / 1000000.0);
+            System.out.printf("tim thay phan tu tai vi tri %s, mat %.3f ms \n", index, time / 1000000.0);
     }
 
     protected static class Node<E> {
