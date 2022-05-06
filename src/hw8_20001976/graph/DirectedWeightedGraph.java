@@ -206,7 +206,7 @@ public class DirectedWeightedGraph<V, E extends Comparable<? super E>> implement
         link[uIndex][vIndex] = null;
     }
 
-    class WeightedEdge implements Edge<E> {
+    public class WeightedEdge implements Edge<E>, Comparable<Edge<E>> {
         final Vertex<V>[] endpoints;
         E element;
 
@@ -228,6 +228,12 @@ public class DirectedWeightedGraph<V, E extends Comparable<? super E>> implement
         @Override
         public Vertex[] endVertices() {
             return endpoints;
+        }
+
+
+        @Override
+        public int compareTo(Edge<E> e) {
+            return element.compareTo(e.getValue());
         }
     }
 

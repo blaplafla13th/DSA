@@ -45,5 +45,6 @@ public class DwgTest {
         }
         dwg.removeEdge(cd);
         System.out.println("Remove test cd: " + dwg.getEdge(c, d));
+        System.out.println("Compare ab with ad: " + ((DirectedWeightedGraph.WeightedEdge) ab).compareTo(ad));
     }
 }

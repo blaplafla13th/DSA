@@ -179,7 +179,7 @@ public class UndirectedUnweightedGraph<V, E> implements Graph<V, E> {
         link[uIndex][vIndex] = link[vIndex][uIndex] = null;
     }
 
-    class UnweighedEdge implements Edge<E> {
+    public class UnweighedEdge implements Edge<E> {
         final Vertex<V>[] endpoints;
         E element;
 
