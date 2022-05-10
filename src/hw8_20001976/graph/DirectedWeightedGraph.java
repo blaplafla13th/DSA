@@ -3,6 +3,7 @@ package hw8_20001976.graph;
 import java.util.ArrayList;
 
 @SuppressWarnings({"unchecked", "rawtypes"})
+
 public class DirectedWeightedGraph<V, E extends Comparable<? super E>> implements Graph<V, E> {
     protected ArrayList<Vertex<V>> vertices;
     protected ArrayList<Edge<V>> edges;
@@ -34,6 +35,7 @@ public class DirectedWeightedGraph<V, E extends Comparable<? super E>> implement
         return (Iterable<Edge<E>>) edges.iterator();
     }
 
+    @Override
     public int deg() {
         int count = 0;
         for (Edge[] edges : link) {
@@ -57,6 +59,7 @@ public class DirectedWeightedGraph<V, E extends Comparable<? super E>> implement
         return count;
     }
 
+    @Override
     public Iterable<Vertex<V>> linked(Vertex<V> v) {
         if (v == null || !vertices.contains(v))
             throw new IllegalArgumentException("Unknown vertex");
@@ -215,23 +218,18 @@ public class DirectedWeightedGraph<V, E extends Comparable<? super E>> implement
             this.element = element;
         }
 
-        @Override
         public E getValue() {
             return element;
         }
 
-        @Override
         public void setValue(E value) {
             this.element = value;
         }
 
-        @Override
         public Vertex[] endVertices() {
             return endpoints;
         }
 
-
-        @Override
         public int compareTo(Edge<E> e) {
             return element.compareTo(e.getValue());
         }

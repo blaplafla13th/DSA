@@ -25,6 +25,8 @@ public interface Graph<V, E> {
     // Returns the number of edges leaving vertex v.
     int deg(); //Returns deg of graph.
 
+    Iterable<Vertex<V>> linked(Vertex<V> v);
+
     int outDegree(Vertex<V> v) throws IllegalArgumentException;
 
     //Returns the number of edges for which vertex v is the destination.

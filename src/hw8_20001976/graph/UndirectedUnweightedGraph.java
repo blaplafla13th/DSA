@@ -48,6 +48,7 @@ public class UndirectedUnweightedGraph<V, E> implements Graph<V, E> {
         return count;
     }
 
+    @Override
     public Iterable<Vertex<V>> linked(Vertex<V> v) {
         if (v == null || !vertices.contains(v))
             throw new IllegalArgumentException("Unknown vertex");
