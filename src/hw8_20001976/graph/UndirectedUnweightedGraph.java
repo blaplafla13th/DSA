@@ -130,7 +130,7 @@ public class UndirectedUnweightedGraph<V, E> implements Graph<V, E> {
         Vertex<V> vertex = new Vertex<>(element);
         vertices.add(vertex);
         if (vertices.size() > link.length) {
-            Edge<E>[][] edgesTemp = new Edge[vertices.size()][vertices.size()];
+            Edge<E>[][] edgesTemp = new Edge[vertices.size() * 3 / 2][vertices.size() * 3 / 2];
             for (int i = 0; i < link.length; i++) {
                 System.arraycopy(link[i], 0, edgesTemp[i], 0, link[i].length);
             }

@@ -23,7 +23,7 @@ public interface Graph<V, E> {
 
 
     // Returns the number of edges leaving vertex v.
-    int deg();
+    int deg(); //Returns deg of graph.
 
     int outDegree(Vertex<V> v) throws IllegalArgumentException;
 
